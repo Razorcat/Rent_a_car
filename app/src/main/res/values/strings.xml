@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">"24 hours rent"</string>
+    <string name="rent_a_car">Rent a car</string>
+    <string name="txt_Username">Username</string>
+    <string name="txt_Password">Password</string>
+    <string name="btn_Login">Login</string>
+    <string name="btn_MojeRezervacije">Moje Rezervacije</string>
+    <string name="btn_NovaRezervacija">Nova Rezervacija</string>
+    <string name="btn_PregledDostupnihVozila">Pregled dostupnih vozila</string>
+    <string name="title_activity_glavni">Meni</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_pregled_vozila">Pregled Vozila</string>
+    <string name="title_activity_moje_rezervacije">Moje_rezervacije</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_nova_rezervacija">Nova_rezervacija</string>
+
+</resources>
