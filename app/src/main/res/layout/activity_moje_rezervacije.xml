@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
 
         android:id="@+id/textView" />
-//ovo je ok
+//ovo je ok ok
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
