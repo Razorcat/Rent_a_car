@@ -44,14 +44,15 @@
         android:textSize="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_centerInParent="true"
         android:password="true"
         android:padding="12dp"
-        android:layout_margin="4dp"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/txt_shape"
-        />
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/txtUsername"
+        android:layout_alignEnd="@+id/txtUsername"
+        android:layout_alignLeft="@+id/txtUsername"
+        android:layout_alignStart="@+id/txtUsername" />
 
     <Button
 
@@ -62,8 +63,7 @@
         android:onClick="btnLogin_onClick"
         android:background="@drawable/btn_unpressed"
         android:layout_below="@+id/txtPassword"
-        android:layout_alignRight="@+id/txtPassword"
-        android:layout_alignEnd="@+id/txtPassword"
-        android:layout_marginTop="45dp" />
+        android:layout_alignLeft="@+id/txtPassword"
+        android:layout_alignStart="@+id/txtPassword" />
 
 </RelativeLayout>
