@@ -59,11 +59,11 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/txtPassword"
         android:onClick="btnLogin_onClick"
-        android:layout_margin="4dp"
         android:background="@drawable/btn_unpressed"
-        />
+        android:layout_below="@+id/txtPassword"
+        android:layout_alignRight="@+id/txtPassword"
+        android:layout_alignEnd="@+id/txtPassword"
+        android:layout_marginTop="45dp" />
 
 </RelativeLayout>
