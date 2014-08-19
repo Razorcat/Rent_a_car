@@ -13,7 +13,7 @@ public class Nova_rezervacija extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nova_rezervacija);
     }
-
+//
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
