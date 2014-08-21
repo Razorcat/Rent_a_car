@@ -32,5 +32,6 @@
     <item >@drawable/ic_searchlupa</item>
     </string-array>
 
+    <string name="desc_list_item_icons">Item Icon</string>
 
 </resources>
