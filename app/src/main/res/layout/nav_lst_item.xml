@@ -35,15 +35,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/lst_counter_shape"
-        android:layout_toRightOf="@+id/naslov"
+
         android:layout_marginRight="8dp"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:padding="5dp"
         android:textColor="@color/White"
-
-
         />
+
+
     
 
 
