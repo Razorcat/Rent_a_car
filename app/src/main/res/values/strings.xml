@@ -16,4 +16,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_nova_rezervacija">Nova_rezervacija</string>
 
+    <string-array name="nav_drawer_strings"> //definisemo niz za item-e kojima ce biti popunjen navigationDrawer
+        //popunjavamo niz ovim item-ima,koji su zapravo opcije ili mogu biti nesto drugo
+    <item>Pregled vozila </item>
+    <item>Rezervacija vozila </item>
+    <item>Pregled rezervacija </item>
+
+    </string-array>
+
 </resources>

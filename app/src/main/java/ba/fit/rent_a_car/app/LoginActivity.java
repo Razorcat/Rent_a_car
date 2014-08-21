@@ -17,10 +17,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //---------------------
-        Bundle extras = getIntent().getBundleExtra("test"); //test je ključ koji trazimo
-        TextView
-        //-------------------
+
     }
 
 
@@ -54,10 +51,6 @@ public class LoginActivity extends Activity {
         if(strLogin.startsWith("S") && strPassword.startsWith("S")){
 
             Intent intent= new Intent(this,GlavniActivity.class);       //prije svega potrebno import Intent
-           //-------------------------
-            intent.putExtra("test", "Ovo je podatak s druge aktivnoti");
-            //test je ključ, a ova kao "poruka" je sadrzaj tog ključa
-           //----------------------
             intent.putExtra("login",strLogin);
             startActivity(intent);
 
