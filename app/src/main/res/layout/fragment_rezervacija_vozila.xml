@@ -2,13 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="ba.fit.rent_a_car.app.pregledVozilaFragment">
+    tools:context="ba.fit.rent_a_car.app.RezervacijaVozila_Fragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PRIJAVA"
+        android:text="REZERVACIJA VOZILA"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
 

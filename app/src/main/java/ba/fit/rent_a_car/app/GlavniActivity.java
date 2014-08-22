@@ -1,26 +1,105 @@
 package ba.fit.rent_a_car.app;
 
 //import android.support.v7.app.ActionBarActivity;
+import android.app.Fragment;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.app.Activity;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.content.res.TypedArray;
+import java.util.ArrayList;
+
+import ba.fit.rent_a_car.ViewModel.NavigationDrawerItem;
+import ba.fit.rent_a_car.ViewModel.NavigationDrawerListAdapter;
+//import android.widget.TextView;
 
 public class GlavniActivity extends Activity {
+
+
+    private DrawerLayout NavDrawerLayout;
+    private ListView NavDraverListView;
+    private ActionBarDrawerToggle NavDrawerToogle;
+
+    private CharSequence NavDrawerTitle;
+    private CharSequence AppTitle;
+
+    private  String[] NavDrawerItemTitles;
+    private TypedArray NavDrawerIcons;
+
+    private ArrayList<NavigationDrawerItem> NavDrawerItems;
+    private NavigationDrawerListAdapter NavDrawerAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_glavni);
 
-        String strUsername= getIntent().getExtras().getString("login");
-        TextView txtDobrodosao =(TextView) findViewById(R.id.txtDobrodosao);
-        txtDobrodosao.setText("Dobrodosli :" + strUsername);
+        this.AppTitle = this.getTitle();
+        this.NavDrawerTitle = this.getTitle();
+
+        this.NavDrawerItemTitles = this.getResources().getStringArray(R.array.nav_drawer_strings);
+        this.NavDrawerIcons = this.getResources().getStringArray(R.array.nav_drawer_icons);
+
+        this.NavDrawerItems.add(new NavigationDrawerItem(NavDrawerItemTitles[0], NavDrawerIcons.getResourceId(0, -1)));
+        this.NavDrawerItems.add(new NavigationDrawerItem(NavDrawerItemTitles[1], NavDrawerIcons.getResourceId(1, -1)));
+        this.NavDrawerItems.add(new NavigationDrawerItem(NavDrawerItemTitles[2], NavDrawerIcons.getResourceId(2, -1)));
+//        this.NavDrawerItems.add(new NavigationDrawerItem(NavDrawerItemTitles[1],NavDrawerIcons.getResourceId(3,-1)));
+
+        NavDrawerIcons.recycle();
+
+        NavDraverListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DisplayFragment(i);
+                setTitle(NavDrawerItemTitles[i]);
+                NavDraverListView.setItemChecked(i,true);
+                NavDrawerLayout.closeDrawer(NavDraverListView);
+
+            }
+        });
+
+        this.NavDrawerAdapter = new NavigationDrawerListAdapter(this.getApplicationContext(),NavDrawerItems);
+        this.NavDraverListView.setAdapter(NavDrawerAdapter);
 
     }
+
+
+    private void DisplayFragment(int position){
+        Fragment fragment = null;
+
+        switch (position){
+
+            case 0:
+                fragment = new PregledVozila_Fragment();
+            break;
+
+            case 1:
+                fragment = new RezervacijaVozila_Fragment();
+                break;
+            case 2:
+                fragment = new PregledRezervacija_Fragment();
+                break;
+
+            default:
+                break;
+        }
+
+    }
+
+
+//       String strUsername= getIntent().getExtras().getString("login");
+//        TextView txtDobrodosao =(TextView) findViewById(R.id.txt);
+//        txtDobrodosao.setText("Dobrodosli :" + strUsername);
+
+
 
 
     @Override
