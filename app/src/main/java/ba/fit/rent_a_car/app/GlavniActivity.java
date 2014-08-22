@@ -14,7 +14,6 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.content.res.TypedArray;
 import java.util.ArrayList;
 
 import ba.fit.rent_a_car.ViewModel.NavigationDrawerItem;
@@ -59,9 +58,9 @@ public class GlavniActivity extends Activity {
         NavDraverListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DisplayFragment(i);
-                setTitle(NavDrawerItemTitles[i]);
-                NavDraverListView.setItemChecked(i, true);
+                DisplayFragment(position);
+                setTitle(NavDrawerItemTitles[position]);
+                NavDraverListView.setItemChecked(position, true);
                 NavDrawerLayout.closeDrawer(NavDraverListView);
 
             }
@@ -107,12 +106,12 @@ public class GlavniActivity extends Activity {
                 fragment = new RezervacijaVozila_Fragment();
                 break;
             case 2:
-                fragment = new PregledRezervacija_Fragment();
+                fragment = new PregledVozila_Fragment();
                 break;
 
             default:
                 break;
-
+        }
             if (fragment != null)
                 this.getFragmentManager().beginTransaction().replace(R.id.frame_container, fragment).commit();
             else
@@ -120,7 +119,7 @@ public class GlavniActivity extends Activity {
 
         }
 
-    }
+
 
 
 //       String strUsername= getIntent().getExtras().getString("login");
@@ -173,7 +172,7 @@ public class GlavniActivity extends Activity {
 //        if (id == R.id.action_settings) {
 //            return true;
 //        }
-        return super.onOptionsItemSelected(item);
+//        return super.onOptionsItemSelected(item);
     }
 
     /*public void Mojerezervacije(View view) { //mora biti public i primati view,
