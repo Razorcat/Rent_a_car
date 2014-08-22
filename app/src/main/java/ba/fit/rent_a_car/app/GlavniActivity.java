@@ -69,6 +69,21 @@ public class GlavniActivity extends Activity {
         this.NavDrawerAdapter = new NavigationDrawerListAdapter(this.getApplicationContext(),NavDrawerItems);
         this.NavDraverListView.setAdapter(NavDrawerAdapter);
 
+        this.getActionBar().setDisplayHomeAsUpEnabled(true);
+        this.getActionBar().setHomeButtonEnabled(true);
+        this.NavDrawerToogle= new ActionBarDrawerToggle(this.getApplicationContext(),this.NavDrawerLayout,R.drawable.ic_navigation_drawer, R.string.app_name,R.string.app_name){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+               getActionBar().setTitle(NavDrawerTitle);
+                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+               getActionBar().setTitle(AppTitle);
+                invalidateOptionsMenu();
+            }
+        };
     }
 
 
