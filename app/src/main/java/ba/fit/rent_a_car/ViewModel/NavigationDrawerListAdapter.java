@@ -7,11 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-
-
 import java.util.ArrayList;
-
 import ba.fit.rent_a_car.app.R;
 
 public class NavigationDrawerListAdapter extends BaseAdapter {
@@ -53,8 +49,13 @@ public class NavigationDrawerListAdapter extends BaseAdapter {
         TextView counter = (TextView) convertView.findViewById(R.id.counter);
 
         icon.setImageResource(NavDrawerItems.get(position).getIcon());
+        title.setText(NavDrawerItems.get(position).getLabelNaziv());
 
+        if (NavDrawerItems.get(position).isCounterVisible())
+            counter.setText(NavDrawerItems.get(position).getCounter()); //  counter.setText(NavDrawerItems.get(position).getCounter().toString());
+        else
+        counter.setVisibility(View.GONE);
 
-        return null;
+        return convertView;
     }
 }

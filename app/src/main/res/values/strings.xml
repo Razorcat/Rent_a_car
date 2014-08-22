@@ -17,21 +17,21 @@
     <string name="title_activity_nova_rezervacija">Nova_rezervacija</string>
 
     <!-- Navigation drawer labels -->
-    <string-array name="nav_drawer_strings"> //definisemo niz za item-e kojima ce biti popunjen navigationDrawer
-        //popunjavamo niz ovim item-ima,koji su zapravo opcije ili mogu biti nesto drugo
-    <item>Pregled vozila </item>
-    <item>Rezervacija vozila </item>
-    <item>Pregled rezervacija </item>
+    <string-array name="nav_drawer_strings">
+ //definisemo niz za item-e kojima ce biti popunjen navigationDrawer
+        //popunjavamo niz ovim item-ima,koji su zapravo opcije ili mogu biti nesto drugo        <item>Pregled vozila </item>
+        <item>Rezervacija vozila </item>
+        <item>Pregled rezervacija </item>
     </string-array>
 
-
-    <!-- Navigation drawer icons-->
+    <!-- Navigation drawer icons -->
     <string-array name="nav_drawer_icons">
-    <item >@drawable/ic_caricon</item>
-    <item >@drawable/ic_addicon</item>
-    <item >@drawable/ic_searchlupa</item>
+        <item>@drawable/ic_caricon</item>
+        <item>@drawable/ic_addicon</item>
+        <item>@drawable/ic_searchlupa</item>
     </string-array>
 
     <string name="desc_list_item_icons">Item Icon</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
