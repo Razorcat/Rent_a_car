@@ -45,8 +45,12 @@ public class GlavniActivity extends Activity {
         this.AppTitle = this.getTitle();
         this.NavDrawerTitle = this.getTitle();
 
+        this.NavDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        this.NavDraverListView = (ListView) findViewById(R.id.lst_navBar);
+
         this.NavDrawerItemTitles = this.getResources().getStringArray(R.array.nav_drawer_strings);
         this.NavDrawerIcons = this.getResources().obtainTypedArray(R.array.nav_drawer_icons);
+        this.NavDrawerItems = new ArrayList<NavigationDrawerItem>();
 
         this.NavDrawerItems.add(new NavigationDrawerItem(NavDrawerItemTitles[0], NavDrawerIcons.getResourceId(0, -1)));
         this.NavDrawerItems.add(new NavigationDrawerItem(NavDrawerItemTitles[1], NavDrawerIcons.getResourceId(1, -1)));
