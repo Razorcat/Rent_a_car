@@ -133,7 +133,7 @@ public class GlavniActivity extends Activity {
 
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
-        menu.findItem(R.id.action_settings).setVisible(this.NavDrawerLayout.isDrawerOpen(this.NavDraverListView));
+//        menu.findItem(R.id.action_settings).setVisible(this.NavDrawerLayout.isDrawerOpen(this.NavDraverListView));
         return super.onPrepareOptionsMenu(menu);
     }
 
