@@ -36,7 +36,9 @@ public class LoginActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent= new Intent(this,Moje_rezervacije.class);       //prije svega potrebno import Intent
+
+            startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -50,7 +52,7 @@ public class LoginActivity extends Activity {
 
         if(strLogin.startsWith("S") && strPassword.startsWith("S")){
 
-            Intent intent= new Intent(this,GlavniActivity.class);       //prije svega potrebno import Intent
+            Intent intent= new Intent(this,Moje_rezervacije.class);       //prije svega potrebno import Intent
             intent.putExtra("login",strLogin);
             startActivity(intent);
 
