@@ -46,18 +46,19 @@ public class LoginActivity extends Activity {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               if( !AppStatus.getInstance(LoginActivity.this).isOnline())
+                 Toast.makeText(LoginActivity.this,"Niste povezani na mrežu!",Toast.LENGTH_SHORT).show();
+                else {
                 if (txt_username.getText().length() > 0 && txt_password.getText().length() > 0) {
                     DoPOST mDoPOST = new DoPOST(LoginActivity.this);
                     mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_login.php",
-                            txt_username.getText().toString(), txt_password
-                                    .getText().toString());
-                }
+                            txt_username.getText().toString(), txt_password .getText().toString());
+                }    }
             }
         });
     }
     // prosiruje asyncTask<stoJaSaljem,PrimaIteracija,PrimaKrajRezultat>
     public class DoPOST extends AsyncTask<String, Void, String> {
-
         Context mContext = null;
 
         DoPOST(Context context) {
@@ -66,9 +67,7 @@ public class LoginActivity extends Activity {
         //niz stringova prima
         @Override
         protected String doInBackground(String... arg0) {
-
             try {
-
                 String username = arg0[1];
                 String password = arg0[2];
 
@@ -96,7 +95,7 @@ public class LoginActivity extends Activity {
                 return result;
 
             } catch (Exception e) {
-                Log.e("NewsApp", "Error:", e);
+                Log.e("Rent a car", "Error:", e);
                 return "";
             }
         }
