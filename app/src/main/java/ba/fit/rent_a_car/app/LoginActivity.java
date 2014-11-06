@@ -32,6 +32,7 @@ public class LoginActivity extends Activity {
     Button btn_login;
     EditText txt_username;
     EditText txt_password;
+    int klijentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,18 +110,20 @@ public class LoginActivity extends Activity {
                 jsonObject = new JSONObject(result);
 
                 String username = jsonObject.getString("username");
+                klijentID =jsonObject.getInt("id");
 
                 if (username != "null") {
                     user=username;
                     finish();
                     Intent i = new Intent(LoginActivity.this,Moje_rezervacije.class);
+                    i.putExtra("KlijentID",klijentID);
                     startActivity(i);
                 } else {
                     throw new Exception();
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
-                Toast.makeText(LoginActivity.this, "Neispravni podaci ili nemate privilegija!",Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Neispravni podaci! ",Toast.LENGTH_LONG).show();
             }
         }
     }

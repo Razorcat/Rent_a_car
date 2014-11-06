@@ -4,14 +4,24 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 
 public class Moje_rezervacije extends ActionBarActivity {
+   Button btnKlijentID;
+    int KlijentID;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moje_rezervacije);
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            KlijentID=extras.getInt("KlijentID");
+        }
+        btnKlijentID=(Button)findViewById(R.id.btnKlijentID);
+        btnKlijentID.setText("Klijent ID: "+KlijentID);
     }
 
 
