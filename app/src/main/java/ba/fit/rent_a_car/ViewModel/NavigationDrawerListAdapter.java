@@ -41,12 +41,11 @@ public class NavigationDrawerListAdapter extends BaseAdapter {
         {
             LayoutInflater inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.nav_lst_item,null);
-
         }
 
-        ImageView icon = (ImageView) convertView.findViewById(R.id.icon);
-        TextView title = (TextView) convertView.findViewById(R.id.title);
-        TextView counter = (TextView) convertView.findViewById(R.id.counter);
+        ImageView icon = (ImageView) convertView.findViewById(R.id.iconCar);
+        TextView title = (TextView) convertView.findViewById(R.id.txtNaslov);
+        TextView counter = (TextView) convertView.findViewById(R.id.txtInfo);
 
         icon.setImageResource(NavDrawerItems.get(position).getIcon());
         title.setText(NavDrawerItems.get(position).getLabelNaziv());

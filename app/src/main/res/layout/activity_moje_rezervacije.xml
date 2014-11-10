@@ -9,36 +9,46 @@
     android:background="#ff17d7ff"
     tools:context="ba.fit.rent_a_car.app.Moje_rezervacije">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:id="@+id/textView" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Button"
         android:id="@+id/btnKlijentID"
-        android:layout_below="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_marginLeft="42dp"
-        android:layout_marginTop="25dp"
-        android:clickable="true" />
+        android:clickable="true"
+        android:layout_marginTop="164dp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgAuto"
-        android:background="@drawable/ic_launcher"
         android:clickable="false"
         android:layout_below="@+id/btnKlijentID"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"
         android:layout_alignParentBottom="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listViewNarudzbe"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/imgAuto"
+        android:layout_toRightOf="@+id/btnKlijentID"
+        android:layout_toEndOf="@+id/btnKlijentID"
+        tools:listitem="@layout/nav_lst_item" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/txtINFO"
+        android:layout_alignTop="@+id/listViewNarudzbe"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
     //ovo je ok ok
 
 </RelativeLayout>
