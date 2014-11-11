@@ -15,29 +15,33 @@
         android:text="New Button"
         android:id="@+id/btnKlijentID"
         android:clickable="true"
-        android:layout_marginTop="164dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="82dp" />
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgAuto"
         android:clickable="false"
-        android:layout_below="@+id/btnKlijentID"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignTop="@+id/txtINFO"
+        android:layout_toEndOf="@+id/btnKlijentID"
+        android:layout_alignParentStart="false" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listViewNarudzbe"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/imgAuto"
-        android:layout_toRightOf="@+id/btnKlijentID"
         android:layout_toEndOf="@+id/btnKlijentID"
-        tools:listitem="@layout/nav_lst_item" />
+        tools:listitem="@layout/nav_lst_item"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/imgAuto" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -45,7 +49,19 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/txtINFO"
-        android:layout_alignTop="@+id/listViewNarudzbe"
+        android:layout_toStartOf="@+id/imgAuto"
+        android:layout_above="@+id/btnKlijentID"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="157dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/textViewPrazno"
+        android:visibility="gone"
+        android:layout_alignBottom="@+id/imgAuto"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

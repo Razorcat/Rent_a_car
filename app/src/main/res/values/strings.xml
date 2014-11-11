@@ -11,6 +11,8 @@
     <string name="btn_PregledDostupnihVozila">Pregled dostupnih vozila</string>
     <string name="title_activity_glavni">Meni</string>
     <string name="action_settings">Settings</string>
+    <string name="logout">Logout</string>
+    <string name="nova_rezervacija">Nova rezervacija</string>
     <string name="title_activity_pregled_vozila">Pregled Vozila</string>
     <string name="title_activity_moje_rezervacije">Moje_rezervacije</string>
     <string name="hello_world">Hello world!</string>

@@ -28,7 +28,6 @@ public class Narudzba {
         SlikaURL = slikaURL;
     }
 
-
     public ImageView getSlika() {
         return Slika;
     }

@@ -12,27 +12,28 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import ba.fit.rent_a_car.app.Automobil;
 import ba.fit.rent_a_car.app.Narudzba;
 import ba.fit.rent_a_car.app.R;
 
 /**
- * Created by Zrinko on 9.11.2014..
+ * Created by Zrinko on 11.11.2014..
  */
-public class NarudzbaAdapter extends ArrayAdapter<Narudzba> {
+public class AutomobilAdapter extends ArrayAdapter<Automobil> {
     // View lookup cache
     private static class ViewHolder {
         TextView Naslov;
         TextView Info;
         ImageView Slika;
     }
-    public NarudzbaAdapter(Context context, ArrayList<Narudzba> narudzba) {
-        super(context, 0, narudzba);
+    public AutomobilAdapter(Context context, ArrayList<Automobil> automobil) {
+        super(context, 0, automobil);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Get the data item for this position
-        Narudzba narudzba = getItem(position);
+        Automobil automobil = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         ViewHolder viewHolder; // view lookup cache stored in tag
         if (convertView == null) {
@@ -48,11 +49,10 @@ public class NarudzbaAdapter extends ArrayAdapter<Narudzba> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.Naslov.setText(narudzba.getNaslov());
-        viewHolder.Info.setText(narudzba.getInfo());
-        Picasso.with(getContext()).load(narudzba.getSlikaURL()).resize(150,150).into(viewHolder.Slika);
+        viewHolder.Naslov.setText(automobil.getBoja());
+        viewHolder.Info.setText(automobil.getGodinaProizvodnje());
+        Picasso.with(getContext()).load(automobil.getSikaURL()).resize(150,150).into(viewHolder.Slika);
 
         return convertView;
-      }
-
     }
+}

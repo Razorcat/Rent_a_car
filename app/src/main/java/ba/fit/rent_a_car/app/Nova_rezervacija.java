@@ -1,17 +1,70 @@
 package ba.fit.rent_a_car.app;
 
+import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+
+import ba.fit.rent_a_car.ViewModel.AutomobilAdapter;
+import ba.fit.rent_a_car.ViewModel.NarudzbaAdapter;
 
 
 public class Nova_rezervacija extends ActionBarActivity {
+    Button btnRezervacija;
+    ArrayList<Automobil> Automobili=new ArrayList<Automobil>();
+    ListView listView;
+    AutomobilAdapter adapter;
+    static ImageView imgV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nova_rezervacija);
+
+        btnRezervacija=(Button)findViewById(R.id.btnRezerviraj);
+        listView = (ListView) findViewById(R.id.listViewAutomobili);
+        imgV=(ImageView)findViewById(R.id.imgVSlikaAuta);
+
+        DoPOST mDoPOST = new DoPOST(Nova_rezervacija.this);
+        mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getSlobodneAutomobile.php");
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(),"Click ListItem Number " + i, Toast.LENGTH_SHORT).show();
+                Picasso.with(getBaseContext()).load(Automobili.get(i).getSikaURL()).resize(350,300).into(imgV);
+
+            }
+        });
+
     }
 //
 
@@ -28,9 +81,83 @@ public class Nova_rezervacija extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.logout) {
+            finish();
+            Intent i = new Intent(Nova_rezervacija.this,LoginActivity.class);
+            startActivity(i);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+    // prosiruje asyncTask<stoJaSaljem,PrimaIteracija,PrimaKrajRezultat>
+    public class DoPOST extends AsyncTask<String, Void, String> {
+        Context mContext = null;
+
+        DoPOST(Context context) {
+            mContext = context;
+        }
+        //niz stringova prima
+        @Override
+        protected String doInBackground(String... arg0) {
+            try {
+                /*String klijentID = arg0[1];
+
+                //lista keyova i valuea
+                ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("klijent_id", klijentID));*/
+                // Create the HTTP request
+
+                HttpParams httpParameters = new BasicHttpParams();
+                // Setup timeouts
+                HttpConnectionParams.setConnectionTimeout(httpParameters, 15000);
+                HttpConnectionParams.setSoTimeout(httpParameters, 15000);
+
+                HttpClient httpclient = new DefaultHttpClient(httpParameters);
+                //instanciranje post-a
+                HttpPost httppost = new HttpPost(arg0[0]);
+
+               // httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                HttpResponse response = httpclient.execute(httppost);
+                HttpEntity entity = response.getEntity();
+
+                String result = EntityUtils.toString(entity);
+
+                return result;
+
+            } catch (Exception e) {
+                Log.e("Rent a car", "Error:", e);
+                return "";
+            }
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // Update the UI
+            // Create a JSON object from the request response
+            JSONArray jsonArray;
+            try {
+                jsonArray = new JSONArray(result);
+                Automobili.addAll(Automobil.fromJson(jsonArray));
+                adapter = new AutomobilAdapter(Nova_rezervacija.this, Automobili);
+                listView.setAdapter(adapter);
+
+                if (Automobili.size()<=0)
+                    Toast.makeText(Nova_rezervacija.this,"Prazno automobili",Toast.LENGTH_SHORT).show();
+                if(jsonArray.length()<=0){
+                    Toast.makeText(Nova_rezervacija.this,"Prazno automobili JSON",Toast.LENGTH_SHORT).show();
+                }
+
+                else {
+                    throw new Exception();
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                //Toast.makeText(LoginActivity.this, "Neispravni podaci! ",Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
 }
+

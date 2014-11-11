@@ -1,8 +1,10 @@
 package ba.fit.rent_a_car.app;
 
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -10,6 +12,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -31,23 +34,21 @@ import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import ba.fit.rent_a_car.ViewModel.NarudzbaAdapter;
 
-public class Moje_rezervacije extends ActionBarActivity {
+public class Moje_rezervacije extends Activity {
     Button btnKlijentID;
     int KlijentID;
     static ImageView imgV;
     String KlijentIDtemp;
-    public ArrayList<Narudzba> nar=new ArrayList<Narudzba>();
     TextView INFO;
+
+    ArrayList<Narudzba> nar=new ArrayList<Narudzba>();
+    ListView listView;
+    NarudzbaAdapter adapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,30 +66,54 @@ public class Moje_rezervacije extends ActionBarActivity {
         INFO=(TextView)findViewById(R.id.txtINFO);
         INFO.setText("JSON: ");
 
-        // Construct the data source
-        ArrayList<Narudzba> arrayOfNarudzbe = new ArrayList<Narudzba>();
-        // Create the adapter to convert the array to views
-        final NarudzbaAdapter adapter = new NarudzbaAdapter(this, arrayOfNarudzbe);
-        // Attach the adapter to a ListView
-        ListView listView = (ListView) findViewById(R.id.listViewNarudzbe);
-        listView.setAdapter(adapter);
-
         final Narudzba nar2=new Narudzba("TEST nar2","INFO "+KlijentIDtemp,"http://hci020.app.fit.ba/androidPHP/Slike/Golf-VI-GTD.jpg");
+
+        listView = (ListView) findViewById(R.id.listViewNarudzbe);
+
+        DoPOST mDoPOST = new DoPOST(Moje_rezervacije.this);
+        mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
+
 
         btnKlijentID.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Picasso.with(getBaseContext()).load("http://hci020.app.fit.ba/androidPHP/Slike/Golf-VI-GTD.jpg").into(imgV);
-                adapter.add(nar2);
-                
-                //conn test
-                DoPOST mDoPOST = new DoPOST(Moje_rezervacije.this);
-                mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
-                for(int i=0;i<nar.size();i++){
-                    adapter.add(nar.get(i));
-                }
+                //adapter.add(nar2);
             }
         });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(getApplicationContext(),"Click ListItem Number " + i, Toast.LENGTH_SHORT).show();
+                Picasso.with(getBaseContext()).load(nar.get(i).getSlikaURL()).into(imgV);
+
+            }
+        });
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final int pozicija=i;
+                AlertDialog.Builder builder = new AlertDialog.Builder(Moje_rezervacije.this);
+                builder.setCancelable(true);
+                builder.setTitle("Poništi rezervaciju?");
+                builder.setPositiveButton("Da", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        nar.remove(pozicija);
+                        adapter=new NarudzbaAdapter(Moje_rezervacije.this,nar);
+                        listView.setAdapter(adapter);
+                    }
+                }).setNegativeButton("Ne",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //ništa ne radi
+                    }
+                });
+                builder.show();
+                return true;
+            }
+        });
+
 
     }
 
@@ -105,16 +130,20 @@ public class Moje_rezervacije extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.logout) {
+            finish();
+            Intent i = new Intent(Moje_rezervacije.this,LoginActivity.class);
+            startActivity(i);
+            return true;
+        }
+        if (id == R.id.nova_rezervacija) {
+            Intent i = new Intent(Moje_rezervacije.this,Nova_rezervacija.class);
+            startActivity(i);
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-
-
-
-    /////conn test JSON
 
     // prosiruje asyncTask<stoJaSaljem,PrimaIteracija,PrimaKrajRezultat>
     public class DoPOST extends AsyncTask<String, Void, String> {
@@ -165,18 +194,16 @@ public class Moje_rezervacije extends ActionBarActivity {
             try {
                 jsonArray = new JSONArray(result);
                 nar.addAll(Narudzba.fromJson(jsonArray));
+                adapter = new NarudzbaAdapter(Moje_rezervacije.this, nar);
+                listView.setAdapter(adapter);
+
                 if (nar.size()<=0)
-                    Toast.makeText(Moje_rezervacije.this,"Prazno!",Toast.LENGTH_SHORT);
                     btnKlijentID.setText("Lista: 0");
                 if(jsonArray.length()<=0){
                     INFO.setText("JSON: 0");
                 }
-                else INFO.setText("JSON: "+jsonArray.length());
 
-                if (nar.size()>0) {
-                    Toast.makeText(Moje_rezervacije.this,"IMA: "+nar.size(),Toast.LENGTH_SHORT);
-                    btnKlijentID.setText("Lista: "+nar.size());
-                } else {
+                else {
                     throw new Exception();
                 }
             } catch (Exception ex) {
@@ -185,5 +212,4 @@ public class Moje_rezervacije extends ActionBarActivity {
             }
         }
     }
-
 }
