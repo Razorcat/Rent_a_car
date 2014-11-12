@@ -10,18 +10,10 @@ import java.util.ArrayList;
  * Created by Zrinko on 11.11.2014..
  */
 public class Automobil {
-    int Zauzeto;
     String SikaURL;
     String Boja;
     String GodinaProizvodnje;
-
-    public int getZauzeto() {
-        return Zauzeto;
-    }
-
-    public void setZauzeto(int zauzeto) {
-        Zauzeto = zauzeto;
-    }
+    String automobilID;
 
     public String getSikaURL() {
         return SikaURL;
@@ -47,12 +39,20 @@ public class Automobil {
         GodinaProizvodnje = godinaProizvodnje;
     }
 
+    public String getAutomobilID() {
+        return automobilID;
+    }
+
+    public void setAutomobilID(String automobilID) {
+        this.automobilID = automobilID;
+    }
+
     // Constructor to convert JSON object into a Java class instance
     public Automobil(JSONObject object){
         try {
-            this.Zauzeto = object.getInt("Zauzeto");
             this.Boja = object.getString("Boja");
             this.SikaURL=object.getString("Slika");
+            this.automobilID=object.getString("id");
         } catch (JSONException e) {
             e.printStackTrace();
         }

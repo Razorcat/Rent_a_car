@@ -45,7 +45,8 @@ public class Moje_rezervacije extends Activity {
     String KlijentIDtemp;
     TextView INFO;
 
-    ArrayList<Narudzba> nar=new ArrayList<Narudzba>();
+
+    ArrayList<Narudzba> nar;//=new ArrayList<Narudzba>();
     ListView listView;
     NarudzbaAdapter adapter;
 
@@ -66,13 +67,10 @@ public class Moje_rezervacije extends Activity {
         INFO=(TextView)findViewById(R.id.txtINFO);
         INFO.setText("JSON: ");
 
-        final Narudzba nar2=new Narudzba("TEST nar2","INFO "+KlijentIDtemp,"http://hci020.app.fit.ba/androidPHP/Slike/Golf-VI-GTD.jpg");
-
         listView = (ListView) findViewById(R.id.listViewNarudzbe);
 
-        DoPOST mDoPOST = new DoPOST(Moje_rezervacije.this);
-        mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
-
+      //  DoPOST mDoPOST = new DoPOST(Moje_rezervacije.this);
+      //  mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
 
         btnKlijentID.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -138,6 +136,7 @@ public class Moje_rezervacije extends Activity {
         }
         if (id == R.id.nova_rezervacija) {
             Intent i = new Intent(Moje_rezervacije.this,Nova_rezervacija.class);
+            i.putExtra("KlijentID",KlijentID);
             startActivity(i);
             return true;
         }
@@ -193,6 +192,7 @@ public class Moje_rezervacije extends Activity {
             JSONArray jsonArray;
             try {
                 jsonArray = new JSONArray(result);
+                nar=new ArrayList<Narudzba>();
                 nar.addAll(Narudzba.fromJson(jsonArray));
                 adapter = new NarudzbaAdapter(Moje_rezervacije.this, nar);
                 listView.setAdapter(adapter);
@@ -212,4 +212,13 @@ public class Moje_rezervacije extends Activity {
             }
         }
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(Moje_rezervacije.this,"RESUME!",Toast.LENGTH_SHORT).show();
+        DoPOST mDoPOST = new DoPOST(Moje_rezervacije.this);
+        mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
+    }
+
 }

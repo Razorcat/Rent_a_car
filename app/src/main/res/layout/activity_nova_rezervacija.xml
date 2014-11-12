@@ -28,22 +28,25 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rezerviraj"
-        android:id="@+id/btnRezerviraj"
-        android:layout_below="@+id/progressBar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgVSlikaAuta"
-        android:layout_below="@+id/btnRezerviraj"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/btnRezerviraj"
+        android:layout_below="@+id/progressBar"
+        android:layout_toRightOf="@+id/btnRezerviraj" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rezerviraj"
+        android:id="@+id/btnRezerviraj"
+        android:layout_toEndOf="@+id/progressBar"
+        android:layout_alignTop="@+id/imgVSlikaAuta"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
