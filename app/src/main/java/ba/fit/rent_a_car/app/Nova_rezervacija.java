@@ -84,6 +84,7 @@ public class Nova_rezervacija extends ActionBarActivity {
                 Toast.makeText(getApplicationContext(),"Click ListItem Number " + i +"-autID "+Automobili.get(i).automobilID, Toast.LENGTH_SHORT).show();
                 tempPozicija=i;
                 Picasso.with(getBaseContext()).load(Automobili.get(i).getSikaURL()).resize(350,300).into(imgV);
+                finish();
                 Intent it = new Intent(Nova_rezervacija.this,NovaRezervacijaAutomobil.class);
                 it.putExtra("RezervacijaID",RezervacijaID);
                 it.putExtra("AutomobilID",Automobili.get(i).getAutomobilID());
