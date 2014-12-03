@@ -140,6 +140,10 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
             // Update the UI
             // Create a JSON object from the request response
             JSONObject jsonObject;
+
+            String RezID= String.valueOf(RezervacijaID);
+            DoUpdateRezervaciju rez=new DoUpdateRezervaciju(NovaRezervacijaAutomobil.this);
+            rez.execute("http://hci020.app.fit.ba/androidPHP/db_updateRezervacijaAutoID.php",AutomobilID,RezID);
             Toast.makeText(NovaRezervacijaAutomobil.this,"Uspješno ste rezervirali automobil!",Toast.LENGTH_SHORT).show();
             finish();
             Intent i = new Intent(NovaRezervacijaAutomobil.this,Nova_rezervacija.class);
@@ -151,6 +155,67 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
                 ex.printStackTrace();
             }
         }
+
+    }
+
+    public class DoUpdateRezervaciju extends AsyncTask<String, Void, String> {
+        Context mContext = null;
+
+        DoUpdateRezervaciju(Context context) {
+            mContext = context;
+        }
+        //niz stringova prima
+        @Override
+        protected String doInBackground(String... arg0) {
+            try {
+                String AutomobilID = arg0[1];
+                String RezervacijaID = arg0[2];
+
+                //lista keyova i valuea
+                ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("automobil_id", AutomobilID));
+                nameValuePairs.add(new BasicNameValuePair("rezervacija_id", RezervacijaID));
+                // Create the HTTP request
+
+                HttpParams httpParameters = new BasicHttpParams();
+                // Setup timeouts
+                HttpConnectionParams.setConnectionTimeout(httpParameters, 15000);
+                HttpConnectionParams.setSoTimeout(httpParameters, 15000);
+
+                HttpClient httpclient = new DefaultHttpClient(httpParameters);
+                //instanciranje post-a
+                HttpPost httppost = new HttpPost(arg0[0]);
+
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                HttpResponse response = httpclient.execute(httppost);
+                HttpEntity entity = response.getEntity();
+
+                String result = EntityUtils.toString(entity);
+
+                return result;
+
+            } catch (Exception e) {
+                Log.e("Rent a car", "Error:", e);
+                return "";
+            }
+        }
+       // @Override
+       /* protected void onPostExecute(String result) {
+            // Update the UI
+            // Create a JSON object from the request response
+            JSONObject jsonObject;
+            Toast.makeText(NovaRezervacijaAutomobil.this,"Uspješno ste rezervirali automobil!",Toast.LENGTH_SHORT).show();
+            finish();
+            Intent i = new Intent(NovaRezervacijaAutomobil.this,Nova_rezervacija.class);
+            startActivity(i);
+            try {
+                jsonObject = new JSONObject(result);
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }*/
 
     }
 
