@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ba.fit.rent_a_car.app" >
 
+    <!-- Internet Permissions -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -32,11 +37,10 @@
             android:name="ba.fit.rent_a_car.app.Nova_rezervacija"
             android:label="@string/title_activity_nova_rezervacija" >
         </activity>
+        <activity
+            android:name="ba.fit.rent_a_car.app.NovaRezervacijaAutomobil"
+            android:label="@string/title_activity_nova_rezervacija_automobil" >
+        </activity>
     </application>
-
-    <!--  Internet Permissions -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
 </manifest>

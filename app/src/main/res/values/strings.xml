@@ -20,8 +20,11 @@
 
     <!-- Navigation drawer labels -->
     <string-array name="nav_drawer_strings">
-<!-- //definisemo niz za item-e kojima ce biti popunjen navigationDrawer
-        //popunjavamo niz ovim item-ima,koji su zapravo opcije ili mogu biti nesto drugo-->
+
+        <!--
+     //definisemo niz za item-e kojima ce biti popunjen navigationDrawer
+        //popunjavamo niz ovim item-ima,koji su zapravo opcije ili mogu biti nesto drugo
+        -->
         <item>Pregled vozila </item>
         <item>Rezervacija vozila </item>
         <item>Pregled rezervacija </item>
@@ -36,5 +39,6 @@
 
     <string name="desc_list_item_icons">Item Icon</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_nova_rezervacija_automobil">NovaRezervacijaAutomobil</string>
 
 </resources>

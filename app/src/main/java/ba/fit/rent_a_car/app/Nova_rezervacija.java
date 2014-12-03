@@ -81,9 +81,14 @@ public class Nova_rezervacija extends ActionBarActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"Click ListItem Number " + i, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"Click ListItem Number " + i +"-autID "+Automobili.get(i).automobilID, Toast.LENGTH_SHORT).show();
                 tempPozicija=i;
                 Picasso.with(getBaseContext()).load(Automobili.get(i).getSikaURL()).resize(350,300).into(imgV);
+                Intent it = new Intent(Nova_rezervacija.this,NovaRezervacijaAutomobil.class);
+                it.putExtra("RezervacijaID",RezervacijaID);
+                it.putExtra("AutomobilID",Automobili.get(i).getAutomobilID());
+                it.putExtra("SlikaURL",Automobili.get(i).getSikaURL());
+                startActivity(it);
             }
         });
         btnRezervacija.setOnClickListener(new View.OnClickListener() {
@@ -196,6 +201,14 @@ public class Nova_rezervacija extends ActionBarActivity {
                 //Toast.makeText(LoginActivity.this, "Neispravni podaci! ",Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Toast.makeText(Nova_rezervacija.this,"RESUME!",Toast.LENGTH_SHORT).show();
+        DoGetSlobodneAutomobile mDoPOST = new DoGetSlobodneAutomobile(Nova_rezervacija.this);
+        mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
     }
 
     // prosiruje asyncTask<stoJaSaljem,PrimaIteracija,PrimaKrajRezultat>
