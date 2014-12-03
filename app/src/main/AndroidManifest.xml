@@ -41,6 +41,10 @@
             android:name="ba.fit.rent_a_car.app.NovaRezervacijaAutomobil"
             android:label="@string/title_activity_nova_rezervacija_automobil" >
         </activity>
+        <activity
+            android:name="ba.fit.rent_a_car.app.Glavni_activity"
+            android:label="@string/title_activity_glavni_activity" >
+        </activity>
     </application>
 
 </manifest>
