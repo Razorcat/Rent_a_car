@@ -188,9 +188,9 @@ public class Nova_rezervacija extends ActionBarActivity {
                 listView.setAdapter(adapter);
 
                 if (Automobili.size()<=0)
-                    Toast.makeText(Nova_rezervacija.this,"Prazno automobili",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Nova_rezervacija.this,"Prazno automobili",Toast.LENGTH_SHORT);
                 if(jsonArray.length()<=0){
-                    Toast.makeText(Nova_rezervacija.this,"JSON: "+jsonArray.length(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Nova_rezervacija.this,"JSON: "+jsonArray.length(),Toast.LENGTH_SHORT);
                 }
 
                 else {
@@ -206,9 +206,12 @@ public class Nova_rezervacija extends ActionBarActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(Nova_rezervacija.this,"RESUME!",Toast.LENGTH_SHORT).show();
+        DoPOSTnovaRezervacija novarerzervacija=new DoPOSTnovaRezervacija(Nova_rezervacija.this);
+        novarerzervacija.execute("http://hci020.app.fit.ba/androidPHP/db_novaRezervacija.php",KlijentIDtemp);
+
         DoGetSlobodneAutomobile mDoPOST = new DoGetSlobodneAutomobile(Nova_rezervacija.this);
         mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
+        Toast.makeText(Nova_rezervacija.this,"RESUME!",Toast.LENGTH_SHORT).show();
     }
 
     // prosiruje asyncTask<stoJaSaljem,PrimaIteracija,PrimaKrajRezultat>
