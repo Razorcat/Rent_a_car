@@ -69,8 +69,8 @@ public class Moje_rezervacije extends Activity {
 
         listView = (ListView) findViewById(R.id.listViewNarudzbe);
 
-      //  DoPOST mDoPOST = new DoPOST(Moje_rezervacije.this);
-      //  mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
+        DoPOST mDoPOST = new DoPOST(Moje_rezervacije.this);
+        mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
 
         btnKlijentID.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +83,7 @@ public class Moje_rezervacije extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(),"Click ListItem Number " + i, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"ID: "+nar.get(i).getAutomobilID(),Toast.LENGTH_SHORT).show();
                 Picasso.with(getBaseContext()).load(nar.get(i).getSlikaURL()).into(imgV);
 
             }

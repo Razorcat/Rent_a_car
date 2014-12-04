@@ -19,6 +19,7 @@ public class Narudzba {
     public String Info;
     public ImageView Slika;
     public String SlikaURL;
+    public String automobilID;
 
     public String getSlikaURL() {
         return SlikaURL;
@@ -48,14 +49,23 @@ public class Narudzba {
         return Naslov;
     }
 
+    public String getAutomobilID() {
+        return automobilID;
+    }
+
+    public void setAutomobilID(String automobilID) {
+        this.automobilID = automobilID;
+    }
+
     public void setNaslov(String naslov) {
         Naslov = naslov;
     }
 
-    public Narudzba(String naslov,String info,String slikaURL){
+    public Narudzba(String naslov,String info,String slikaURL,String AutomobilID){
         this.Naslov=naslov;
         this.Info=info;
         this.SlikaURL=slikaURL;
+        this.automobilID=AutomobilID;
     }
 
 
@@ -65,6 +75,7 @@ public class Narudzba {
             this.Naslov = object.getString("Naziv_proizvodjaca");
             this.Info = object.getString("Naziv_modela");
             this.SlikaURL=object.getString("Slika");
+            this.automobilID=object.getString("id");
         } catch (JSONException e) {
             e.printStackTrace();
         }
