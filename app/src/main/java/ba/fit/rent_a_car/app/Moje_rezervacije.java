@@ -136,6 +136,7 @@ public class Moje_rezervacije extends Activity {
             return true;
         }
         if (id == R.id.nova_rezervacija) {
+            finish();
             Intent i = new Intent(Moje_rezervacije.this,Nova_rezervacija.class);
             i.putExtra("KlijentID",KlijentID);
             startActivity(i);

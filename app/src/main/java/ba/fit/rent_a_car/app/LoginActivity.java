@@ -43,6 +43,8 @@ public class LoginActivity extends Activity {
         txt_username = (EditText) findViewById(R.id.txtUsername);
         txt_password = (EditText) findViewById(R.id.txtPassword);
 
+        Toast.makeText(this,"Dobrodošli!",Toast.LENGTH_SHORT).show();
+
         btn_login = (Button) findViewById(R.id.btnLogin);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override

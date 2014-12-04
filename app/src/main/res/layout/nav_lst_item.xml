@@ -5,8 +5,8 @@
 
 <ImageView
     android:id="@+id/iconCar"
-    android:layout_width="75dp"
-    android:layout_height="75dp"
+    android:layout_width="110dp"
+    android:layout_height="90dp"
     android:contentDescription="@string/desc_list_item_icons"
     android:src="@drawable/ic_caricon"
     android:layout_alignParentTop="true"

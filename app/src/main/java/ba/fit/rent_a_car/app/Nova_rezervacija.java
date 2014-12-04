@@ -62,10 +62,10 @@ public class Nova_rezervacija extends ActionBarActivity {
         }
         Toast.makeText(Nova_rezervacija.this,"klijentID: "+KlijentID,Toast.LENGTH_SHORT).show();
 
-        btnRezervacija=(Button)findViewById(R.id.btnRezerviraj);
+        //btnRezervacija=(Button)findViewById(R.id.btnRezerviraj);
 
         listView = (ListView) findViewById(R.id.listViewAutomobili);
-        imgV=(ImageView)findViewById(R.id.imgVSlikaAuta);
+       // imgV=(ImageView)findViewById(R.id.imgVSlikaAuta);
 
         DoPOSTnovaRezervacija novarerzervacija=new DoPOSTnovaRezervacija(Nova_rezervacija.this);
         novarerzervacija.execute("http://hci020.app.fit.ba/androidPHP/db_novaRezervacija.php",KlijentIDtemp);
@@ -76,24 +76,23 @@ public class Nova_rezervacija extends ActionBarActivity {
         DoGetSlobodneAutomobile mDoPOST = new DoGetSlobodneAutomobile(Nova_rezervacija.this);
         mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getSlobodneAutomobile.php");
 
-        btnRezervacija.setText("RezID: "+RezervacijaID);
+       // btnRezervacija.setText("RezID: "+RezervacijaID);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(),"Click ListItem Number " + i +"-autID "+Automobili.get(i).automobilID, Toast.LENGTH_SHORT).show();
                 tempPozicija=i;
-                Picasso.with(getBaseContext()).load(Automobili.get(i).getSikaURL()).resize(350,300).into(imgV);
+               // Picasso.with(getBaseContext()).load(Automobili.get(i).getSikaURL()).resize(350,300).into(imgV);
                 finish();
                 Intent it = new Intent(Nova_rezervacija.this,NovaRezervacijaAutomobil.class);
                 it.putExtra("RezervacijaID",RezervacijaID);
                 it.putExtra("AutomobilID",Automobili.get(i).getAutomobilID());
                 it.putExtra("SlikaURL",Automobili.get(i).getSikaURL());
-
                 startActivity(it);
             }
         });
-        btnRezervacija.setOnClickListener(new View.OnClickListener() {
+       /*btnRezervacija.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 btnRezervacija.setText("RezID: "+ RezervacijaID);
@@ -109,7 +108,7 @@ public class Nova_rezervacija extends ActionBarActivity {
                     tempPozicija=0;
                 }
             }
-        });
+        });*/
 
     }
 //

@@ -16,37 +16,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_above="@+id/progressBar"
-        tools:listitem="@layout/nav_lst_item" />
-
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgVSlikaAuta"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@+id/btnRezerviraj"
-        android:layout_below="@+id/progressBar"
-        android:layout_toRightOf="@+id/btnRezerviraj" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rezerviraj"
-        android:id="@+id/btnRezerviraj"
-        android:layout_toEndOf="@+id/progressBar"
-        android:layout_alignTop="@+id/imgVSlikaAuta"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        tools:listitem="@layout/nav_lst_item"
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>

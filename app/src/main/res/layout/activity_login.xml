@@ -12,13 +12,15 @@
     <TextView
 
         android:text="@string/rent_a_car"
-        android:textSize="24dp"
+        android:textSize="30dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="78dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textView" />
+        android:id="@+id/textView"
+        android:textStyle="bold|italic"
+        android:textColor="@color/LightBlue" />
 
 
 

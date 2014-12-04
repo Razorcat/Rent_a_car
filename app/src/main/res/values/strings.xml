@@ -14,9 +14,9 @@
     <string name="logout">Logout</string>
     <string name="nova_rezervacija">Nova rezervacija</string>
     <string name="title_activity_pregled_vozila">Pregled Vozila</string>
-    <string name="title_activity_moje_rezervacije">Moje_rezervacije</string>
+    <string name="title_activity_moje_rezervacije">Moje rezervacije</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_nova_rezervacija">Nova_rezervacija</string>
+    <string name="title_activity_nova_rezervacija">Nova rezervacija</string>
 
     <!-- Navigation drawer labels -->
     <string-array name="nav_drawer_strings">
