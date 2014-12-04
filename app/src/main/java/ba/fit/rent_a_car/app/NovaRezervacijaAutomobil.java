@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -29,6 +30,7 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -41,6 +43,9 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
     String SlikaURL;
     static ImageView imgV;
     Button btnRezerviraj;
+    TextView txtModel;
+    TextView txtProzvodjac;
+    TextView txtGodina;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +58,10 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
             AutomobilID = extras.getString("AutomobilID");
             SlikaURL = extras.getString("SlikaURL");
         }
+        txtModel=(TextView)findViewById(R.id.txtAutoModel);
+        txtGodina=(TextView)findViewById(R.id.txtAutoGodina);
+        txtProzvodjac=(TextView)findViewById(R.id.txtAutoProizvodja);
+
         btnRezerviraj=(Button)findViewById(R.id.btnRezervirajAuto);
         imgV=(ImageView)findViewById(R.id.imgViewNAuto);
         Picasso.with(getBaseContext()).load(SlikaURL).resize(550,435).into(imgV);

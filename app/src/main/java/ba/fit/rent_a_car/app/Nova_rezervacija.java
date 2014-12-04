@@ -89,6 +89,7 @@ public class Nova_rezervacija extends ActionBarActivity {
                 it.putExtra("RezervacijaID",RezervacijaID);
                 it.putExtra("AutomobilID",Automobili.get(i).getAutomobilID());
                 it.putExtra("SlikaURL",Automobili.get(i).getSikaURL());
+
                 startActivity(it);
             }
         });
