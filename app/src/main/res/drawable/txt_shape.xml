@@ -2,6 +2,6 @@
 
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
  <solid android:color="@color/White"/> //odrediti boju polja za unos teksta
- <corners android:radius="12dp"/>
+ <corners android:radius="12dp"/> //radijus za sva 4 ugla
 
 </shape>
