@@ -117,7 +117,7 @@ public class LoginActivity extends Activity {
                 if (username != "null") {
                     user=username;
                     finish();
-                    Intent i = new Intent(LoginActivity.this,Moje_rezervacije.class);
+                    Intent i = new Intent(LoginActivity.this,Glavni_activity.class);
                     i.putExtra("KlijentID",klijentID);
                     startActivity(i);
                 } else {

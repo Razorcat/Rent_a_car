@@ -1,6 +1,8 @@
 package ba.fit.rent_a_car.app;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.ActionBarActivity;
@@ -70,9 +72,26 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
         btnRezerviraj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String RezID= String.valueOf(RezervacijaID);
-                DoSetRezervaciju SetRezervaciju=new DoSetRezervaciju(NovaRezervacijaAutomobil.this);
-                SetRezervaciju.execute("http://hci020.app.fit.ba/androidPHP/db_dodajRezervacijuAutomobilu.php",AutomobilID,RezID);
+                AlertDialog.Builder builder = new AlertDialog.Builder(NovaRezervacijaAutomobil.this);
+                builder.setCancelable(true);
+                builder.setTitle("Rezervirati automobil?");
+                builder.setPositiveButton("Da", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        String RezID= String.valueOf(RezervacijaID);
+                        DoSetRezervaciju SetRezervaciju=new DoSetRezervaciju(NovaRezervacijaAutomobil.this);
+                        SetRezervaciju.execute("http://hci020.app.fit.ba/androidPHP/db_dodajRezervacijuAutomobilu.php",AutomobilID,RezID);
+
+                    }
+                }).setNegativeButton("Ne",new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //ništa ne radi
+                    }
+                });
+                builder.show();
+
 
             }
         });
@@ -158,7 +177,7 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
             rez.execute("http://hci020.app.fit.ba/androidPHP/db_updateRezervacijaAutoID.php",AutomobilID,RezID);
             Toast.makeText(NovaRezervacijaAutomobil.this,"Uspješno ste rezervirali automobil!",Toast.LENGTH_SHORT).show();
             finish();
-            Intent i = new Intent(NovaRezervacijaAutomobil.this,Nova_rezervacija.class);
+            Intent i = new Intent(NovaRezervacijaAutomobil.this,Moje_rezervacije.class);
             startActivity(i);
             try {
                 jsonObject = new JSONObject(result);
