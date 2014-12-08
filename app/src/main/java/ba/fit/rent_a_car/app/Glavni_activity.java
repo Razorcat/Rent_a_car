@@ -12,6 +12,7 @@ import android.widget.Button;
 public class Glavni_activity extends ActionBarActivity {
     Button btnMojerezervacije;
     Button btnNovaRezervacija;
+    Button btnUvjetiKoristenja;
     String KlijentIDtemp;
     int KlijentID;
 
@@ -45,6 +46,14 @@ public class Glavni_activity extends ActionBarActivity {
                 startActivity(i);
             }
         });
+        btnUvjetiKoristenja=(Button)findViewById(R.id.btn_UsloviKoristenja);
+        btnUvjetiKoristenja.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i=new Intent(Glavni_activity.this,Uslovi_koristenja.class);
+                startActivity(i);
+            }
+        });
     }
 
 
@@ -63,7 +72,10 @@ public class Glavni_activity extends ActionBarActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.logout) {
+            finish();
+            Intent i = new Intent(Glavni_activity.this,LoginActivity.class);
+            startActivity(i);
             return true;
         }
 

@@ -2,10 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ba.fit.rent_a_car.app.Nova_rezervacija" >
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+
     <item android:id="@+id/logout"
         android:title="@string/logout"
         android:orderInCategory="100"
