@@ -23,14 +23,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GlavniActivity"
-            android:label="@string/title_activity_glavni" >
-        </activity>
-        <activity
-            android:name=".PregledVozilaActivity"
-            android:label="@string/title_activity_pregled_vozila" >
-        </activity>
-        <activity
             android:name=".Moje_rezervacije"
             android:label="@string/title_activity_moje_rezervacije" >
         </activity>
