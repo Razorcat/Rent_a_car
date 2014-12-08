@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="ba.fit.rent_a_car.app.LoginActivity"
+            android:name=".LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,28 +22,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="ba.fit.rent_a_car.app.GlavniActivity"
+            android:name=".GlavniActivity"
             android:label="@string/title_activity_glavni" >
         </activity>
         <activity
-            android:name="ba.fit.rent_a_car.app.PregledVozilaActivity"
+            android:name=".PregledVozilaActivity"
             android:label="@string/title_activity_pregled_vozila" >
         </activity>
         <activity
-            android:name="ba.fit.rent_a_car.app.Moje_rezervacije"
+            android:name=".Moje_rezervacije"
             android:label="@string/title_activity_moje_rezervacije" >
         </activity>
         <activity
-            android:name="ba.fit.rent_a_car.app.Nova_rezervacija"
+            android:name=".Nova_rezervacija"
             android:label="@string/title_activity_nova_rezervacija" >
         </activity>
         <activity
-            android:name="ba.fit.rent_a_car.app.NovaRezervacijaAutomobil"
+            android:name=".NovaRezervacijaAutomobil"
             android:label="@string/title_activity_nova_rezervacija_automobil" >
         </activity>
         <activity
-            android:name="ba.fit.rent_a_car.app.Glavni_activity"
+            android:name=".Glavni_activity"
             android:label="@string/title_activity_glavni_activity" >
+        </activity>
+        <activity
+            android:name=".Uslovi_koristenja"
+            android:label="@string/title_activity_uslovi_koristenja" >
         </activity>
     </application>
 

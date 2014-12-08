@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Moje rezervacije"
-        android:layout_marginTop="123dp"
+        android:layout_marginTop="124dp"
         android:clickable="false"
         android:background="@drawable/btn_unpressed"
         android:layout_alignParentTop="true"
@@ -30,4 +30,14 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="60dp" />
+
+    <Button
+        android:id="@+id/btn_UsloviKoristenja"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Uslovi korištenja"
+        android:background="@drawable/btn_unpressed"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="186dp" />
 </RelativeLayout>

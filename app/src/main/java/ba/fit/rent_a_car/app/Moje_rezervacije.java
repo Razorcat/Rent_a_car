@@ -39,12 +39,10 @@ import java.util.ArrayList;
 import ba.fit.rent_a_car.ViewModel.NarudzbaAdapter;
 
 public class Moje_rezervacije extends Activity {
-    Button btnKlijentID;
     int KlijentID;
-    static ImageView imgV;
     String KlijentIDtemp;
-    TextView INFO;
-
+    TextView txtCijenaDan;
+    TextView txtDatumRezervacije;
 
     ArrayList<Narudzba> nar;//=new ArrayList<Narudzba>();
     ListView listView;
@@ -60,31 +58,21 @@ public class Moje_rezervacije extends Activity {
             KlijentID=extras.getInt("KlijentID");
             KlijentIDtemp=String.valueOf(KlijentID);
         }
-        btnKlijentID=(Button)findViewById(R.id.btnKlijentID);
-        btnKlijentID.setText("Klijent ID: "+KlijentID);
-
-        imgV=(ImageView)findViewById(R.id.imgAuto);
-        INFO=(TextView)findViewById(R.id.txtINFO);
-        INFO.setText("JSON: ");
-
         listView = (ListView) findViewById(R.id.listViewNarudzbe);
+        txtCijenaDan=(TextView)findViewById(R.id.text_CijenaDan);
+        txtDatumRezervacije=(TextView)findViewById(R.id.txtDatum_rezervacije);
 
         DoPOST mDoPOST = new DoPOST(Moje_rezervacije.this);
         mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
 
-        btnKlijentID.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Picasso.with(getBaseContext()).load("http://hci020.app.fit.ba/androidPHP/Slike/Golf-VI-GTD.jpg").into(imgV);
-                //adapter.add(nar2);
-            }
-        });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(getApplicationContext(),"Click ListItem Number " + i, Toast.LENGTH_SHORT).show();
                 Toast.makeText(getApplicationContext(),"ID: "+nar.get(i).getAutomobilID(),Toast.LENGTH_SHORT).show();
-                Picasso.with(getBaseContext()).load(nar.get(i).getSlikaURL()).into(imgV);
+
+                txtCijenaDan.setText("Cijena po danu: "+nar.get(i).getCijenaPoDanu());
+                txtDatumRezervacije.setText("Datum rezervacije:"+nar.get(i).getDatumRezervacije());
 
             }
         });
@@ -98,6 +86,8 @@ public class Moje_rezervacije extends Activity {
                 builder.setPositiveButton("Da", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        DoPonistiRezervaciju rezPonisti=new DoPonistiRezervaciju(Moje_rezervacije.this);
+                        rezPonisti.execute("http://hci020.app.fit.ba/androidPHP/db_ponistiRezervaciju.php",nar.get(pozicija).getAutomobilID(),"null");
                         nar.remove(pozicija);
                         adapter=new NarudzbaAdapter(Moje_rezervacije.this,nar);
                         listView.setAdapter(adapter);
@@ -200,9 +190,9 @@ public class Moje_rezervacije extends Activity {
                 listView.setAdapter(adapter);
 
                 if (nar.size()<=0)
-                    btnKlijentID.setText("Lista: 0");
+
                 if(jsonArray.length()<=0){
-                    INFO.setText("JSON: 0");
+
                 }
 
                 else {
@@ -215,10 +205,55 @@ public class Moje_rezervacije extends Activity {
         }
     }
 
+
+    public class DoPonistiRezervaciju extends AsyncTask<String, Void, String> {
+        Context mContext = null;
+
+        DoPonistiRezervaciju(Context context) {
+            mContext = context;
+        }
+        //niz stringova prima
+        @Override
+        protected String doInBackground(String... arg0) {
+            try {
+                String automobilID = arg0[1];
+                String rezervacijaID = arg0[2];
+
+                //lista keyova i valuea
+                ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+                nameValuePairs.add(new BasicNameValuePair("automobil_id", automobilID));
+                nameValuePairs.add(new BasicNameValuePair("rezervacija_id", rezervacijaID));
+                // Create the HTTP request
+                HttpParams httpParameters = new BasicHttpParams();
+                // Setup timeouts
+                HttpConnectionParams.setConnectionTimeout(httpParameters, 15000);
+                HttpConnectionParams.setSoTimeout(httpParameters, 15000);
+
+                HttpClient httpclient = new DefaultHttpClient(httpParameters);
+                //instanciranje post-a
+                HttpPost httppost = new HttpPost(arg0[0]);
+
+                httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                HttpResponse response = httpclient.execute(httppost);
+                HttpEntity entity = response.getEntity();
+
+                String result = EntityUtils.toString(entity);
+
+                return result;
+
+            } catch (Exception e) {
+                Log.e("Rent a car", "Error:", e);
+                return "";
+            }
+        }
+
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
-        Toast.makeText(Moje_rezervacije.this,"RESUME!",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(Moje_rezervacije.this,"RESUME!",Toast.LENGTH_SHORT).show();
         DoPOST mDoPOST = new DoPOST(Moje_rezervacije.this);
         mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
     }

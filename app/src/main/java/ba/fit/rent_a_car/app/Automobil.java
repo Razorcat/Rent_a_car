@@ -14,6 +14,51 @@ public class Automobil {
     String Boja;
     String GodinaProizvodnje;
     String automobilID;
+    String NazivProzvodjaca;
+    String NazivModela;
+    String Gorivo;
+    String Transmisija;
+    int CijenaPoDanu;
+
+    public String getGorivo() {
+        return Gorivo;
+    }
+
+    public void setGorivo(String gorivo) {
+        Gorivo = gorivo;
+    }
+
+    public String getTransmisija() {
+        return Transmisija;
+    }
+
+    public void setTransmisija(String transmisija) {
+        Transmisija = transmisija;
+    }
+
+    public int getCijenaPoDanu() {
+        return CijenaPoDanu;
+    }
+
+    public void setCijenaPoDanu(int cijenaPoDanu) {
+        CijenaPoDanu = cijenaPoDanu;
+    }
+
+    public String getNazivProzvodjaca() {
+        return NazivProzvodjaca;
+    }
+
+    public void setNazivProzvodjaca(String nazivProzvodjaca) {
+        NazivProzvodjaca = nazivProzvodjaca;
+    }
+
+    public String getNavizModela() {
+        return NazivModela;
+    }
+
+    public void setNavizModela(String nazivModela) {
+        NazivModela = nazivModela;
+    }
 
     public String getSikaURL() {
         return SikaURL;
@@ -52,7 +97,13 @@ public class Automobil {
         try {
             this.Boja = object.getString("Boja");
             this.SikaURL=object.getString("Slika");
-            this.automobilID=object.getString("id");
+            this.automobilID=object.getString("autoID");
+            this.NazivProzvodjaca=object.getString("Naziv_proizvodjaca");
+            this.NazivModela=object.getString("Naziv_Modela");
+            this.GodinaProizvodnje=object.getString("Godina_proizvodnje");
+            this.Gorivo=object.getString("Gorivo");
+            this.Transmisija=object.getString("Transmisija");
+            this.CijenaPoDanu=object.getInt("cijenaPoDanu");
         } catch (JSONException e) {
             e.printStackTrace();
         }

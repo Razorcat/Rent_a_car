@@ -62,10 +62,7 @@ public class Nova_rezervacija extends ActionBarActivity {
         }
         Toast.makeText(Nova_rezervacija.this,"klijentID: "+KlijentID,Toast.LENGTH_SHORT).show();
 
-        //btnRezervacija=(Button)findViewById(R.id.btnRezerviraj);
-
         listView = (ListView) findViewById(R.id.listViewAutomobili);
-       // imgV=(ImageView)findViewById(R.id.imgVSlikaAuta);
 
         DoPOSTnovaRezervacija novarerzervacija=new DoPOSTnovaRezervacija(Nova_rezervacija.this);
         novarerzervacija.execute("http://hci020.app.fit.ba/androidPHP/db_novaRezervacija.php",KlijentIDtemp);
@@ -76,12 +73,9 @@ public class Nova_rezervacija extends ActionBarActivity {
         DoGetSlobodneAutomobile mDoPOST = new DoGetSlobodneAutomobile(Nova_rezervacija.this);
         mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getSlobodneAutomobile.php");
 
-       // btnRezervacija.setText("RezID: "+RezervacijaID);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"Click ListItem Number " + i +"-autID "+Automobili.get(i).automobilID, Toast.LENGTH_SHORT).show();
                 tempPozicija=i;
                // Picasso.with(getBaseContext()).load(Automobili.get(i).getSikaURL()).resize(350,300).into(imgV);
                 finish();
@@ -89,29 +83,17 @@ public class Nova_rezervacija extends ActionBarActivity {
                 it.putExtra("RezervacijaID",RezervacijaID);
                 it.putExtra("AutomobilID",Automobili.get(i).getAutomobilID());
                 it.putExtra("SlikaURL",Automobili.get(i).getSikaURL());
+                it.putExtra("GodinaProizvodnje",Automobili.get(i).getGodinaProizvodnje());
+                it.putExtra("Gorivo",Automobili.get(i).getGorivo());
+                it.putExtra("Transmisija",Automobili.get(i).getTransmisija());
+                it.putExtra("Cijena",Automobili.get(i).getCijenaPoDanu());
+                it.putExtra("KlijentID",KlijentID);
                 startActivity(it);
             }
         });
-       /*btnRezervacija.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btnRezervacija.setText("RezID: "+ RezervacijaID);
-                if(KlijentID>0 && RezervacijaID>0 && tempPozicija>0) {/// greška!!!!!!
-                    RezervacijaIDtemp=String.valueOf(RezervacijaID);
-                    String AutomobilIDTemp=String.valueOf(tempPozicija);
-                    //sql(Automobili.get(i).getAutomobilID());
-                   // DoPOST3 mDoPOST3 = new DoPOST3(Nova_rezervacija.this);
-                   // mDoPOST3.execute("http://hci020.app.fit.ba/androidPHP/db_dodajRezervacijuAutomobilu.php",AutomobilIDTemp,RezervacijaIDtemp);
-                    Automobili.remove(tempPozicija);
-                    adapter=new AutomobilAdapter(Nova_rezervacija.this,Automobili);
-                    listView.setAdapter(adapter);
-                    tempPozicija=0;
-                }
-            }
-        });*/
 
     }
-//
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -38,7 +38,14 @@
 
     <string name="desc_list_item_icons">Item Icon</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_nova_rezervacija_automobil">NovaRezervacijaAutomobil</string>
-    <string name="title_activity_glavni_activity">Glavni_activity</string>
+    <string name="title_activity_nova_rezervacija_automobil">Nova rezervacija</string>
+    <string name="title_activity_glavni_activity">Glavni izbornik</string>
+    <string name="title_activity_uslovi_koristenja">Uslovi_koristenja</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Uvjeti_koristenja">
+        Opći uvjeti korštenja
+        - da ima 21 godinu starosti te posjeduje vozačku dozvolu najmanje 2 godine
+
+    </string>
 
 </resources>

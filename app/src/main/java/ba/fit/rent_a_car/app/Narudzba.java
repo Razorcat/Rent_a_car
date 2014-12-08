@@ -20,6 +20,24 @@ public class Narudzba {
     public ImageView Slika;
     public String SlikaURL;
     public String automobilID;
+    public String datumRezervacije;
+    public int CijenaPoDanu;
+
+    public String getDatumRezervacije() {
+        return datumRezervacije;
+    }
+
+    public void setDatumRezervacije(String datumRezervacije) {
+        this.datumRezervacije = datumRezervacije;
+    }
+
+    public int getCijenaPoDanu() {
+        return CijenaPoDanu;
+    }
+
+    public void setCijenaPoDanu(int cijenaPoDanu) {
+        CijenaPoDanu = cijenaPoDanu;
+    }
 
     public String getSlikaURL() {
         return SlikaURL;
@@ -68,7 +86,6 @@ public class Narudzba {
         this.automobilID=AutomobilID;
     }
 
-
     // Constructor to convert JSON object into a Java class instance
     public Narudzba(JSONObject object){
         try {
@@ -76,6 +93,8 @@ public class Narudzba {
             this.Info = object.getString("Naziv_modela");
             this.SlikaURL=object.getString("Slika");
             this.automobilID=object.getString("id");
+            this.CijenaPoDanu = object.getInt("cijenaPoDanu");
+            this.datumRezervacije= object.getString("datumRezervacije");
         } catch (JSONException e) {
             e.printStackTrace();
         }

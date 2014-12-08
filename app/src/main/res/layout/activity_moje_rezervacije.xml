@@ -10,57 +10,35 @@
     android:background="@color/SteelBlue"
     tools:context="ba.fit.rent_a_car.app.Moje_rezervacije">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/btnKlijentID"
-        android:clickable="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="82dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgAuto"
-        android:clickable="false"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_alignTop="@+id/txtINFO"
-        android:layout_toEndOf="@+id/btnKlijentID"
-        android:layout_alignParentStart="false" />
-
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listViewNarudzbe"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/btnKlijentID"
         tools:listitem="@layout/nav_lst_item"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/imgAuto" />
+        android:layout_above="@+id/txtDatum_rezervacije" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/txtINFO"
-        android:layout_centerVertical="true"
+        android:text="Datum rezervacije"
+        android:id="@+id/txtDatum_rezervacije"
+        android:layout_marginBottom="49dp"
+        android:layout_above="@+id/text_CijenaDan"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:id="@+id/textViewPrazno"
-        android:visibility="gone"
-        android:layout_alignBottom="@+id/imgAuto"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Cijena po danu"
+        android:id="@+id/text_CijenaDan"
+        android:layout_marginBottom="121dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 

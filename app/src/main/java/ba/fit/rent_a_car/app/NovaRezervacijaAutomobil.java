@@ -30,13 +30,9 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
-
-import ba.fit.rent_a_car.ViewModel.AutomobilAdapter;
 
 
 public class NovaRezervacijaAutomobil extends ActionBarActivity {
@@ -45,9 +41,15 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
     String SlikaURL;
     static ImageView imgV;
     Button btnRezerviraj;
-    TextView txtModel;
-    TextView txtProzvodjac;
+    TextView txtGorivo;
+    TextView txtTransmisija;
     TextView txtGodina;
+    TextView txtCijena;
+    String Gorivo;
+    String Transmisija;
+    int CijenaPoDanu;
+    String GodinaProizvodnje;
+    int KlijentID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +61,24 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
             RezervacijaID = extras.getInt("RezervacijaID");
             AutomobilID = extras.getString("AutomobilID");
             SlikaURL = extras.getString("SlikaURL");
+            GodinaProizvodnje=extras.getString("GodinaProizvodnje");
+            Gorivo=extras.getString("Gorivo");
+            Transmisija = extras.getString("Transmisija");
+            CijenaPoDanu = extras.getInt("Cijena");
+            KlijentID =extras.getInt("KlijentID");
         }
-        txtModel=(TextView)findViewById(R.id.txtAutoModel);
+        Toast.makeText(this,"AutoID "+AutomobilID,Toast.LENGTH_SHORT).show();
+
         txtGodina=(TextView)findViewById(R.id.txtAutoGodina);
-        txtProzvodjac=(TextView)findViewById(R.id.txtAutoProizvodja);
+        txtCijena=(TextView)findViewById(R.id.txtCijena);
+        txtGorivo=(TextView)findViewById(R.id.txtGorivo);
+        txtTransmisija=(TextView)findViewById(R.id.txtTransmisija);
+
+        txtGorivo.setText("Gorivo: "+Gorivo);
+        txtTransmisija.setText("Transmisija: "+Transmisija);
+        txtCijena.setText("Cijena: " + CijenaPoDanu+" KM");
+        txtGodina.setText("Godina: "+ GodinaProizvodnje);
+
 
         btnRezerviraj=(Button)findViewById(R.id.btnRezervirajAuto);
         imgV=(ImageView)findViewById(R.id.imgViewNAuto);
@@ -177,7 +193,8 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
             rez.execute("http://hci020.app.fit.ba/androidPHP/db_updateRezervacijaAutoID.php",AutomobilID,RezID);
             Toast.makeText(NovaRezervacijaAutomobil.this,"Uspješno ste rezervirali automobil!",Toast.LENGTH_SHORT).show();
             finish();
-            Intent i = new Intent(NovaRezervacijaAutomobil.this,Moje_rezervacije.class);
+            Intent i = new Intent(NovaRezervacijaAutomobil.this,Glavni_activity.class);
+            i.putExtra("KlijentID",KlijentID);
             startActivity(i);
             try {
                 jsonObject = new JSONObject(result);

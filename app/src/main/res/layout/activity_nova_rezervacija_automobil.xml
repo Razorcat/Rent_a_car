@@ -16,17 +16,17 @@
         android:background="@color/SteelBlue"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/txtAutoModel"
+        android:layout_above="@+id/txtGorivo"
         android:layout_alignParentTop="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Model"
-        android:id="@+id/txtAutoModel"
+        android:text="Gorivo"
+        android:id="@+id/txtGorivo"
         android:layout_above="@+id/btnRezervirajAuto"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentLeft="false"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="105dp" />
 
@@ -39,16 +39,18 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
+        android:background="@drawable/btn_unpressed"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Proizvodjac"
-        android:id="@+id/txtAutoProizvodja"
-        android:layout_below="@+id/imgViewNAuto"
-        android:layout_centerHorizontal="true" />
+        android:text="Transmisija"
+        android:id="@+id/txtTransmisija"
+        android:layout_above="@+id/btnRezervirajAuto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -56,8 +58,20 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Godina"
         android:id="@+id/txtAutoGodina"
-        android:layout_below="@+id/imgViewNAuto"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_above="@+id/txtTransmisija"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="23dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Cijena"
+        android:id="@+id/txtCijena"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_alignTop="@+id/txtAutoGodina"
+        android:layout_toRightOf="@+id/txtTransmisija"
+        android:layout_toEndOf="@+id/txtTransmisija" />
 
 </RelativeLayout>

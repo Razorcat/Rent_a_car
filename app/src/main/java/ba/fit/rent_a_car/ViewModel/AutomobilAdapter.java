@@ -49,7 +49,7 @@ public class AutomobilAdapter extends ArrayAdapter<Automobil> {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        viewHolder.Naslov.setText(automobil.getBoja());
+        viewHolder.Naslov.setText(automobil.getNazivProzvodjaca()+":"+automobil.getNavizModela());
         viewHolder.Info.setText(automobil.getGodinaProizvodnje());
         Picasso.with(getContext()).load(automobil.getSikaURL()).resize(150,150).into(viewHolder.Slika);
 
