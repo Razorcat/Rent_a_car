@@ -40,11 +40,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_nova_rezervacija_automobil">Nova rezervacija</string>
     <string name="title_activity_glavni_activity">Glavni izbornik</string>
-    <string name="title_activity_uslovi_koristenja">Uslovi_koristenja</string>
+    <string name="title_activity_uslovi_koristenja">Uvjeti koristenja</string>
     <string name="hello_world">Hello world!</string>
     <string name="Uvjeti_koristenja">
-        Opći uvjeti korštenja
-        - da ima 21 godinu starosti te posjeduje vozačku dozvolu najmanje 2 godine
+        \n Opći uvjeti korištenja
+        \n\n- da ima 21 godinu starosti te posjeduje vozačku dozvolu najmanje 2 godine
+        \n - da nakon rezervacije klijent mora u roku od 2 dana preuzet rezervaciju ili mu se ta ista poništava
 
     </string>
 
