@@ -67,7 +67,7 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
             CijenaPoDanu = extras.getInt("Cijena");
             KlijentID =extras.getInt("KlijentID");
         }
-        Toast.makeText(this,"AutoID "+AutomobilID,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this,"AutoID "+AutomobilID,Toast.LENGTH_SHORT).show();
 
         txtGodina=(TextView)findViewById(R.id.txtAutoGodina);
         txtCijena=(TextView)findViewById(R.id.txtCijena);
@@ -83,7 +83,7 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
         btnRezerviraj=(Button)findViewById(R.id.btnRezervirajAuto);
         imgV=(ImageView)findViewById(R.id.imgViewNAuto);
         Picasso.with(getBaseContext()).load(SlikaURL).resize(550,435).into(imgV);
-        Toast.makeText(this,"rez "+RezervacijaID+"- AutID "+AutomobilID,Toast.LENGTH_LONG).show();
+       // Toast.makeText(this,"rez "+RezervacijaID+"- AutID "+AutomobilID,Toast.LENGTH_LONG).show();
 
         btnRezerviraj.setOnClickListener(new View.OnClickListener() {
             @Override

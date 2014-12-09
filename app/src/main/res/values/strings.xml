@@ -44,8 +44,27 @@
     <string name="hello_world">Hello world!</string>
     <string name="Uvjeti_koristenja">
         \n Opći uvjeti korištenja
-        \n\n- da ima 21 godinu starosti te posjeduje vozačku dozvolu najmanje 2 godine
-        \n - da nakon rezervacije klijent mora u roku od 2 dana preuzet rezervaciju ili mu se ta ista poništava
+        \n\n da ima 21 godinu starosti te posjeduje vozačku dozvolu najmanje 2 godine.
+        \n da nakon rezervacije klijent mora u roku od 2 dana preuzet rezervaciju ili mu se ta ista poništava.
+        \n\n  Uslovi plaćanja
+        \n\n Ukoliko iznajmljujete kao fizičko lice troskove najma i sve eventualne dodatne troškove možete
+        \n  platiti gotovinski ili kreditnom karticom.
+        \n Pravna lica najam plaćaju preko tekućeg računa.
+        \n\n  Osiguranje
+        \n\n Pravnu i materijalnu sigurnost obezbeđujete plaćanjem Osiguranja za štete na vozilu
+        \n  i Osiguranja za krađu vozila
+        \n\n  Odgovornost
+        \n\n Međusobna prava i obaveze 24 hours Rent a Car-a kao Najmodavca i Vas kao Najmoprimca
+        \n su precizno regulisana Ugovorom o najmu koji se potpisuje prilikom preuzimanja vozila.
+        \n\n  Gorivo
+        \n\n Automobil dobijate sa punim rezervoarom a troškove goriva sami snosite. U slučaju da ne
+        \n  vratite vozilo sa punim rezervoarom, utrošeno gorivo se naplaćuje prema Opštim
+        \n  i dodatnim uslovima najma vozila.
+        \n\n  Preuzimanje i dostava
+        \n\n Vozilo možete preuzeti u jednoj od nasih poslovnica u Bosni i Hercegovini.
+        \n Preuzimanja i dostava vozila na teritoriji Bosne i Hercegovine se posebno naplaćuje
+        \n  prema cijenovniku utvrđenim dodatnim uslovima najma.
+
 
     </string>
 

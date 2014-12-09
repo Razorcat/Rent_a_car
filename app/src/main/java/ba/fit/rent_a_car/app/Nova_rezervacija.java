@@ -246,8 +246,7 @@ public class Nova_rezervacija extends ActionBarActivity {
             try {
                 jsonObject = new JSONObject(result);
                 RezervacijaID =jsonObject.getInt("id");
-               // btnRezervacija.setText("RezID: "+RezervacijaID);
-              //test  Toast.makeText(Nova_rezervacija.this,"rezID "+RezervacijaID,Toast.LENGTH_LONG).show();
+
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -304,8 +303,6 @@ public class Nova_rezervacija extends ActionBarActivity {
             try {
                 jsonObject = new JSONObject(result);
                 RezervacijaID =jsonObject.getInt("id");
-                btnRezervacija.setText("RezID: "+RezervacijaID);
-             //   Toast.makeText(Nova_rezervacija.this,"rezID "+RezervacijaID,Toast.LENGTH_LONG).show();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
