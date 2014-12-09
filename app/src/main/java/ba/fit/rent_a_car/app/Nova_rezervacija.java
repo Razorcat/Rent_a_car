@@ -60,7 +60,7 @@ public class Nova_rezervacija extends ActionBarActivity {
             KlijentID = extras.getInt("KlijentID");
             KlijentIDtemp=String.valueOf(KlijentID);
         }
-        Toast.makeText(Nova_rezervacija.this,"klijentID: "+KlijentID,Toast.LENGTH_SHORT).show();
+       // Toast.makeText(Nova_rezervacija.this,"klijentID: "+KlijentID,Toast.LENGTH_SHORT).show();
 
         listView = (ListView) findViewById(R.id.listViewAutomobili);
 
@@ -181,7 +181,7 @@ public class Nova_rezervacija extends ActionBarActivity {
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
-                //Toast.makeText(LoginActivity.this, "Neispravni podaci! ",Toast.LENGTH_LONG).show();
+             //   Toast.makeText(LoginActivity.this, "Neispravni podaci!",Toast.LENGTH_LONG).show();
             }
         }
     }
@@ -194,7 +194,7 @@ public class Nova_rezervacija extends ActionBarActivity {
 
         DoGetSlobodneAutomobile mDoPOST = new DoGetSlobodneAutomobile(Nova_rezervacija.this);
         mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_getRezervacije.php", KlijentIDtemp);
-        Toast.makeText(Nova_rezervacija.this,"RESUME!",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(Nova_rezervacija.this,"RESUME!",Toast.LENGTH_SHORT).show();
     }
 
     // prosiruje asyncTask<stoJaSaljem,PrimaIteracija,PrimaKrajRezultat>
@@ -246,8 +246,8 @@ public class Nova_rezervacija extends ActionBarActivity {
             try {
                 jsonObject = new JSONObject(result);
                 RezervacijaID =jsonObject.getInt("id");
-                btnRezervacija.setText("RezID: "+RezervacijaID);
-                Toast.makeText(Nova_rezervacija.this,"rezID "+RezervacijaID,Toast.LENGTH_LONG).show();
+               // btnRezervacija.setText("RezID: "+RezervacijaID);
+              //test  Toast.makeText(Nova_rezervacija.this,"rezID "+RezervacijaID,Toast.LENGTH_LONG).show();
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -305,7 +305,7 @@ public class Nova_rezervacija extends ActionBarActivity {
                 jsonObject = new JSONObject(result);
                 RezervacijaID =jsonObject.getInt("id");
                 btnRezervacija.setText("RezID: "+RezervacijaID);
-                Toast.makeText(Nova_rezervacija.this,"rezID "+RezervacijaID,Toast.LENGTH_LONG).show();
+             //   Toast.makeText(Nova_rezervacija.this,"rezID "+RezervacijaID,Toast.LENGTH_LONG).show();
 
             } catch (Exception ex) {
                 ex.printStackTrace();

@@ -68,8 +68,8 @@ public class Moje_rezervacije extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(),"Click ListItem Number " + i, Toast.LENGTH_SHORT).show();
-                Toast.makeText(getApplicationContext(),"ID: "+nar.get(i).getAutomobilID(),Toast.LENGTH_SHORT).show();
+             //  Toast.makeText(getApplicationContext(),"Click ListItem Number " + i, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(getApplicationContext(),"ID: "+nar.get(i).getAutomobilID(),Toast.LENGTH_SHORT).show();
 
                 txtCijenaDan.setText("Cijena po danu: "+nar.get(i).getCijenaPoDanu());
                 txtDatumRezervacije.setText("Datum rezervacije:"+nar.get(i).getDatumRezervacije());
