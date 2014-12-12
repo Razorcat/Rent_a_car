@@ -3,10 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="ba.fit.rent_a_car.app.Moje_rezervacije" >
 
-    <item android:id="@+id/nova_rezervacija"
-        android:title="@string/nova_rezervacija"
-        android:orderInCategory="100"
-        app:showAsAction="never" />
+
     <item android:id="@+id/logout"
         android:title="@string/logout"
         android:orderInCategory="100"

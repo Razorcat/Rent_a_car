@@ -32,9 +32,7 @@ public class Registracija extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-      /*     finish();
-            Intent i = new Intent(Registracija.this,LoginActivity.class);
-            startActivity(i);*/
+
             return true;
         }
 

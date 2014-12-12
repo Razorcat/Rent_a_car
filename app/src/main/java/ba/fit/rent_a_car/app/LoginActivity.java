@@ -103,6 +103,7 @@ public class LoginActivity extends Activity {
             }
         }
 
+
         @Override
         protected void onPostExecute(String result) {
             // Update the UI
@@ -123,10 +124,14 @@ public class LoginActivity extends Activity {
                 } else {
                     throw new Exception();
                 }
+
+
             } catch (Exception ex) {
                 ex.printStackTrace();
                 Toast.makeText(LoginActivity.this, "Neispravni podaci! ",Toast.LENGTH_LONG).show();
             }
         }
+
+
     }
 }
