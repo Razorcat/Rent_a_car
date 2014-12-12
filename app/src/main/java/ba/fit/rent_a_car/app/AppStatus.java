@@ -1,7 +1,6 @@
 package ba.fit.rent_a_car.app;
 
 /**
- * Created by Zrinko on 5.11.2014..
  * Provjera da li je uređaj spojen na internet
  */
 

@@ -4,8 +4,14 @@
     <string name="app_name">"24 hours rent"</string>
     <string name="rent_a_car">Rent a car</string>
     <string name="txt_Username">Username</string>
+    <string name="txt_Ime">Ime</string>
+    <string name="txt_Prezime">Prezime</string>
+    <string name="txt_Adresa">Adresa</string>
+    <string name="txt_Korisnicko_ime">Korisničko ime</string>
+    <string name="txt_Lozinka">Lozinka</string>
     <string name="txt_Password">Password</string>
     <string name="btn_Login">Login</string>
+    <string name="btn_Registracija">Register</string>
     <string name="btn_MojeRezervacije">Moje Rezervacije</string>
     <string name="btn_NovaRezervacija">Nova Rezervacija</string>
     <string name="btn_PregledDostupnihVozila">Pregled dostupnih vozila</string>
@@ -42,8 +48,7 @@
     <string name="title_activity_glavni_activity">Glavni izbornik</string>
     <string name="title_activity_uslovi_koristenja">Uvjeti koristenja</string>
     <string name="hello_world">Hello world!</string>
-    <string name="Uvjeti_koristenja">
-        \n Opći uvjeti korištenja
+    <string name="Uvjeti_koristenja">        \n Opći uvjeti korištenja
         \n\n da ima 21 godinu starosti te posjeduje vozačku dozvolu najmanje 2 godine.
         \n da nakon rezervacije klijent mora u roku od 2 dana preuzet rezervaciju ili mu se ta ista poništava.
         \n\n  Uslovi plaćanja
@@ -63,9 +68,7 @@
         \n\n  Preuzimanje i dostava
         \n\n Vozilo možete preuzeti u jednoj od nasih poslovnica u Bosni i Hercegovini.
         \n Preuzimanja i dostava vozila na teritoriji Bosne i Hercegovine se posebno naplaćuje
-        \n  prema cijenovniku utvrđenim dodatnim uslovima najma.
-
-
-    </string>
+        \n  prema cijenovniku utvrđenim dodatnim uslovima najma.</string>
+    <string name="title_activity_registracija">Registracija</string>
 
 </resources>
