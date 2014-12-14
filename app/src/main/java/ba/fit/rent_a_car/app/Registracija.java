@@ -55,38 +55,40 @@ public class Registracija extends ActionBarActivity {
         Adresa=(EditText)findViewById(R.id.txt_Adresa);
         Korisnicko_ime=(EditText)findViewById(R.id.txt_Korisnicko_ime);
         Lozinka=(EditText)findViewById(R.id.txt_Lozinka);
+
+        //stavio unutar onCreate
+        btn_RegistracijaF = (Button) findViewById(R.id.btn_RegistracijaForm);
+        btn_RegistracijaF.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+                Ime = (EditText) findViewById(R.id.txt_Ime);
+                Prezime = (EditText) findViewById(R.id.txt_Prezime);
+                Adresa = (EditText) findViewById(R.id.txt_Adresa);
+                Korisnicko_ime = (EditText) findViewById(R.id.txt_Korisnicko_ime);
+                Lozinka = (EditText) findViewById(R.id.txt_Lozinka);
+
+                if(Ime.getText().length() == 0 || Prezime.getText().length() == 0 || Adresa.getText().length() == 0 ||  Korisnicko_ime.getText().length() == 0 || Lozinka.getText().length() == 0)
+                    Toast.makeText(getApplicationContext(), "Imate prazna polja.", Toast.LENGTH_SHORT).show();
+
+                else{
+                    List<NameValuePair> params = new ArrayList<NameValuePair>();
+                    params.add(new BasicNameValuePair("Ime",Ime.getText().toString()));
+                    params.add(new BasicNameValuePair("Prezime",Prezime.getText().toString()));
+                    params.add(new BasicNameValuePair("Adresa",Adresa.getText().toString()));
+                    params.add(new BasicNameValuePair("Korisnicko_Ime",Korisnicko_ime.getText().toString()));
+                    params.add(new BasicNameValuePair("Lozinka",Lozinka.getText().toString()));
+
+                    String responseFromUrl = new HttpManager().getResponseFromUrl("http://hci025.app.fit.ba/androidPHP/db_registracijaKorisnika.php",params);
+
+                    Toast.makeText(getApplicationContext(),"Registrirali ste se" , Toast.LENGTH_SHORT).show();
+
+
+
+                }}
+        });
     }
 
-    btn_RegistracijaF = (Button) findViewById(R.id.btn_RegistracijaForm);
-    btn_RegistracijaF.setOnClickListener(new View.OnClickListener() {
-
-        @Override
-        public void onClick(View arg0) {
-            Ime = (EditText) findViewById(R.id.txt_Ime);
-            Prezime = (EditText) findViewById(R.id.txt_Prezime);
-            Adresa = (EditText) findViewById(R.id.txt_Adresa);
-            Korisnicko_ime = (EditText) findViewById(R.id.txt_Korisnicko_ime);
-            Lozinka = (EditText) findViewById(R.id.txt_Lozinka);
-
-            if(Ime.getText().length() == 0 || Prezime.getText().length() == 0 || Adresa.getText().length() == 0 ||  Korisnicko_ime.getText().length() == 0 || Lozinka.getText().length() == 0)
-                Toast.makeText(getApplicationContext(), "Imate prazna polja.", Toast.LENGTH_SHORT).show();
-
-            else{
-                List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("Ime",Ime.getText().toString()));
-                params.add(new BasicNameValuePair("Prezime",Prezime.getText().toString()));
-                params.add(new BasicNameValuePair("Adresa",Adresa.getText().toString()));
-                params.add(new BasicNameValuePair("Korisnicko_Ime",Korisnicko_ime.getText().toString()));
-                params.add(new BasicNameValuePair("Lozinka",Lozinka.getText().toString()));
-
-                String responseFromUrl = new HttpManager().getResponseFromUrl("http://hci025.app.fit.ba/androidPHP/db_registracijaKorisnika.php",params);
-
-                Toast.makeText(getApplicationContext(), responseFromUrl, Toast.LENGTH_SHORT).show();
-
-
-
-            }}
-    });
 
 
         @Override

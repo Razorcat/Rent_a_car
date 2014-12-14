@@ -153,7 +153,7 @@ public class NovaRezervacijaAutomobil extends ActionBarActivity {
                 String AutomobilID = arg0[1];
                 String RezervacijaID = arg0[2];
 
-                //lista keyova i valuea
+                //lista keyova i vag
                 ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
                 nameValuePairs.add(new BasicNameValuePair("automobil_id", AutomobilID));
                 nameValuePairs.add(new BasicNameValuePair("rezervacija_id", RezervacijaID));
