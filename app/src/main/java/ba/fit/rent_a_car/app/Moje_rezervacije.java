@@ -73,7 +73,7 @@ public class Moje_rezervacije extends Activity {
 
                 txtCijenaDan.setText("Cijena po danu: "+nar.get(i).getCijenaPoDanu());
                 txtDatumRezervacije.setText("Datum rezervacije:"+nar.get(i).getDatumRezervacije());
-
+                view.setSelected(true);
             }
         });
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
