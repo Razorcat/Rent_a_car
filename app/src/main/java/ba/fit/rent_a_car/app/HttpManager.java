@@ -50,6 +50,7 @@ public class HttpManager {
             // TODO: handle exception
             //e.getMessage();
             e.printStackTrace();
+            //
         }
 
 
