@@ -43,75 +43,76 @@ public class Registracija extends ActionBarActivity {
     EditText Lozinka;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registracija);
 
 
-        Ime=(EditText)findViewById(R.id.txt_Ime);
-        Prezime=(EditText)findViewById(R.id.txt_Prezime);
-        Adresa=(EditText)findViewById(R.id.txt_Adresa);
-        Korisnicko_ime=(EditText)findViewById(R.id.txt_Korisnicko_ime);
-        Lozinka=(EditText)findViewById(R.id.txt_Lozinka);
+        Ime = (EditText) findViewById(R.id.txt_Ime);
+        Prezime = (EditText) findViewById(R.id.txt_Prezime);
+        Adresa = (EditText) findViewById(R.id.txt_Adresa);
+        Korisnicko_ime = (EditText) findViewById(R.id.txt_Korisnicko_ime);
+        Lozinka = (EditText) findViewById(R.id.txt_Lozinka);
+
+        btn_RegistracijaF=(Button)findViewById(R.id.btn_RegistracijaForm);
+        btn_RegistracijaF.setOnClickListener(new View.OnClickListener(){
+             @Override
+             public void onClick (View arg0){
+             Ime = (EditText) findViewById(R.id.txt_Ime);
+             Prezime = (EditText) findViewById(R.id.txt_Prezime);
+             Adresa = (EditText) findViewById(R.id.txt_Adresa);
+             Korisnicko_ime = (EditText) findViewById(R.id.txt_Korisnicko_ime);
+             Lozinka = (EditText) findViewById(R.id.txt_Lozinka);
+
+             if (Ime.getText().length() == 0 || Prezime.getText().length() == 0 || Adresa.getText().length() == 0 || Korisnicko_ime.getText().length() == 0 || Lozinka.getText().length() == 0)
+                 Toast.makeText(getApplicationContext(), "Imate prazna polja.", Toast.LENGTH_SHORT).show();
+
+             else {
+                  List<NameValuePair> params = new ArrayList<NameValuePair>();
+                   params.add(new BasicNameValuePair("Ime", Ime.getText().toString()));
+                   params.add(new BasicNameValuePair("Prezime", Prezime.getText().toString()));
+                   params.add(new BasicNameValuePair("Adresa", Adresa.getText().toString()));
+                   params.add(new BasicNameValuePair("Korisnicko_Ime", Korisnicko_ime.getText().toString()));
+                   params.add(new BasicNameValuePair("Lozinka", Lozinka.getText().toString()));
+
+                  // String responseFromUrl = new HttpManager().getResponseFromUrl("http://hci025.app.fit.ba/androidPHP/db_registracijaKorisnika.php", params);   // HttpManager klasa koje nema
+
+                  // Toast.makeText(getApplicationContext(), responseFromUrl, Toast.LENGTH_SHORT).show();
+
+                   }
+                 }
+             }
+        );
     }
 
-    btn_RegistracijaF = (Button) findViewById(R.id.btn_RegistracijaForm);
-    btn_RegistracijaF.setOnClickListener(new View.OnClickListener() {
-
-        @Override
-        public void onClick(View arg0) {
-            Ime = (EditText) findViewById(R.id.txt_Ime);
-            Prezime = (EditText) findViewById(R.id.txt_Prezime);
-            Adresa = (EditText) findViewById(R.id.txt_Adresa);
-            Korisnicko_ime = (EditText) findViewById(R.id.txt_Korisnicko_ime);
-            Lozinka = (EditText) findViewById(R.id.txt_Lozinka);
-
-            if(Ime.getText().length() == 0 || Prezime.getText().length() == 0 || Adresa.getText().length() == 0 ||  Korisnicko_ime.getText().length() == 0 || Lozinka.getText().length() == 0)
-                Toast.makeText(getApplicationContext(), "Imate prazna polja.", Toast.LENGTH_SHORT).show();
-
-            else{
-                List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("Ime",Ime.getText().toString()));
-                params.add(new BasicNameValuePair("Prezime",Prezime.getText().toString()));
-                params.add(new BasicNameValuePair("Adresa",Adresa.getText().toString()));
-                params.add(new BasicNameValuePair("Korisnicko_Ime",Korisnicko_ime.getText().toString()));
-                params.add(new BasicNameValuePair("Lozinka",Lozinka.getText().toString()));
-
-                String responseFromUrl = new HttpManager().getResponseFromUrl("http://hci025.app.fit.ba/androidPHP/db_registracijaKorisnika.php",params);
-
-                Toast.makeText(getApplicationContext(), responseFromUrl, Toast.LENGTH_SHORT).show();
 
 
 
-            }}
-    });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_registracija, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
 
-        @Override
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.menu_registracija, menu);
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.logout) {
+            finish();
+            Intent i = new Intent(Registracija.this, LoginActivity.class);
+            startActivity(i);
             return true;
         }
 
-        @Override
-        public boolean onOptionsItemSelected(MenuItem item) {
-            // Handle action bar item clicks here. The action bar will
-            // automatically handle clicks on the Home/Up button, so long
-            // as you specify a parent activity in AndroidManifest.xml.
-            int id = item.getItemId();
+        return super.onOptionsItemSelected(item);
+    }
 
-            //noinspection SimplifiableIfStatement
-            if (id == R.id.logout) {
-                finish();
-                Intent i = new Intent(Registracija.this, LoginActivity.class);
-                startActivity(i);
-                return true;
-            }
-
-            return super.onOptionsItemSelected(item);
-        }
 
 }
