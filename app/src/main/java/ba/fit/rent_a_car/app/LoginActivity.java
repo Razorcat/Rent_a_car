@@ -30,6 +30,7 @@ import android.widget.Toast;
 public class LoginActivity extends Activity {
     static String user = "3";
     Button btn_login;
+    Button btn_RegistracijaL;
     EditText txt_username;
     EditText txt_password;
     int klijentID;
@@ -43,23 +44,37 @@ public class LoginActivity extends Activity {
         txt_username = (EditText) findViewById(R.id.txtUsername);
         txt_password = (EditText) findViewById(R.id.txtPassword);
 
-        Toast.makeText(this,"Dobrodošli!",Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Dobrodošli!", Toast.LENGTH_SHORT).show();
 
         btn_login = (Button) findViewById(R.id.btnLogin);
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               if( !AppStatus.getInstance(LoginActivity.this).isOnline())
-                 Toast.makeText(LoginActivity.this,"Niste povezani na mrežu!",Toast.LENGTH_SHORT).show();
+                if (!AppStatus.getInstance(LoginActivity.this).isOnline())
+                    Toast.makeText(LoginActivity.this, "Niste povezani na mrežu!", Toast.LENGTH_SHORT).show();
                 else {
-                if (txt_username.getText().length() > 0 && txt_password.getText().length() > 0) {
-                    DoPOST mDoPOST = new DoPOST(LoginActivity.this);
-                    mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_login.php",
-                            txt_username.getText().toString(), txt_password .getText().toString());
-                }    }
+                    if (txt_username.getText().length() > 0 && txt_password.getText().length() > 0) {
+                        DoPOST mDoPOST = new DoPOST(LoginActivity.this);
+                        mDoPOST.execute("http://hci020.app.fit.ba/androidPHP/db_login.php",
+                                txt_username.getText().toString(), txt_password.getText().toString());
+                    }
+                }
+            }
+        });
+
+        //Registracija korisnika
+       btn_RegistracijaL =(Button)findViewById(R.id.btn_RegistracijaLog);
+        btn_RegistracijaL.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this,Registracija.class);
+            //    i.putExtra("KlijentID",KlijentID);
+                startActivity(i);
             }
         });
     }
+
+
     // prosiruje asyncTask<stoJaSaljem,PrimaIteracija,PrimaKrajRezultat>
     public class DoPOST extends AsyncTask<String, Void, String> {
         Context mContext = null;
@@ -67,6 +82,7 @@ public class LoginActivity extends Activity {
         DoPOST(Context context) {
             mContext = context;
         }
+
         //niz stringova prima
         @Override
         protected String doInBackground(String... arg0) {
@@ -113,13 +129,13 @@ public class LoginActivity extends Activity {
                 jsonObject = new JSONObject(result);
 
                 String username = jsonObject.getString("username");
-                klijentID =jsonObject.getInt("id");
+                klijentID = jsonObject.getInt("id");
 
                 if (username != "null") {
-                    user=username;
+                    user = username;
                     finish();
-                    Intent i = new Intent(LoginActivity.this,Glavni_activity.class);
-                    i.putExtra("KlijentID",klijentID);
+                    Intent i = new Intent(LoginActivity.this, Glavni_activity.class);
+                    i.putExtra("KlijentID", klijentID);
                     startActivity(i);
                 } else {
                     throw new Exception();
@@ -128,7 +144,7 @@ public class LoginActivity extends Activity {
 
             } catch (Exception ex) {
                 ex.printStackTrace();
-                Toast.makeText(LoginActivity.this, "Neispravni podaci! ",Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "Neispravni podaci! ", Toast.LENGTH_LONG).show();
             }
         }
 

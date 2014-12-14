@@ -11,8 +11,8 @@
     <string name="txt_Lozinka">Lozinka</string>
     <string name="txt_Password">Password</string>
     <string name="btn_Login">Login</string>
-    <string name="btn_Registracije">Register now</string>
-    <string name="btn_Registracija">Register</string>
+    <string name="btn_RegistracijeLog">Register now</string>
+    <string name="btn_RegistracijaForm">Register</string>
     <string name="btn_MojeRezervacije">Moje Rezervacije</string>
     <string name="btn_NovaRezervacija">Nova Rezervacija</string>
     <string name="btn_PregledDostupnihVozila">Pregled dostupnih vozila</string>
