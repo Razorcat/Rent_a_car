@@ -28,6 +28,7 @@ import org.apache.http.params.BasicHttpParams;
 import org.apache.http.params.HttpConnectionParams;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,7 +82,9 @@ public class Registracija extends ActionBarActivity {
 
                     String responseFromUrl = new HttpManager().getResponseFromUrl("http://hci025.app.fit.ba/androidPHP/db_registracijaKorisnika.php",params);
 //
-                    Toast.makeText(getApplicationContext(),"Registrirali ste se" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Registriracija uspiješna" , Toast.LENGTH_LONG).show();
+                    Intent i = new Intent(Registracija.this,LoginActivity.class);
+                    startActivity(i);
 
 
 
@@ -97,6 +100,7 @@ public class Registracija extends ActionBarActivity {
             getMenuInflater().inflate(R.menu.menu_registracija, menu);
             return true;
         }
+
 
         @Override
         public boolean onOptionsItemSelected(MenuItem item) {
