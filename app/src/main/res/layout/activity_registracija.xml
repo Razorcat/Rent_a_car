@@ -19,10 +19,10 @@
         android:padding="12dp"
         android:background="@drawable/txt_shape"
         android:maxLines="1"
-        android:layout_marginTop="12dp"
+        android:lines="1"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:lines="1" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/txt_Prezime"
@@ -34,7 +34,7 @@
         android:padding="12dp"
         android:background="@drawable/txt_shape"
         android:maxLines="1"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="40dp"
         android:layout_below="@+id/txt_Ime"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -49,7 +49,7 @@
         android:padding="12dp"
         android:background="@drawable/txt_shape"
         android:maxLines="1"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="40dp"
         android:maxLength="80"
         android:layout_below="@+id/txt_Prezime"
         android:layout_alignParentLeft="true"
@@ -65,7 +65,7 @@
         android:padding="12dp"
         android:background="@drawable/txt_shape"
         android:maxLines="1"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="40dp"
         android:maxLength="50"
         android:layout_below="@+id/txt_Adresa"
         android:layout_alignParentLeft="true"
@@ -81,7 +81,7 @@
         android:padding="12dp"
         android:background="@drawable/txt_shape"
         android:maxLines="1"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="40dp"
         android:maxLength="50"
         android:layout_below="@+id/txt_Korisnicko_ime"
         android:layout_alignParentLeft="true"
@@ -95,7 +95,6 @@
         android:background="@drawable/btn_shape_selector"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="38dp" />
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
