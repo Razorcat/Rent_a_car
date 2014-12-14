@@ -80,7 +80,7 @@ public class Registracija extends ActionBarActivity {
                     params.add(new BasicNameValuePair("Lozinka",Lozinka.getText().toString()));
 
                     String responseFromUrl = new HttpManager().getResponseFromUrl("http://hci025.app.fit.ba/androidPHP/db_registracijaKorisnika.php",params);
-
+//
                     Toast.makeText(getApplicationContext(),"Registrirali ste se" , Toast.LENGTH_SHORT).show();
 
 
