@@ -171,6 +171,7 @@ public class Registracija extends ActionBarActivity {
               //  jsonObject = new JSONObject(result);
 
                 Toast.makeText(Registracija.this,"Registracija uspješna",Toast.LENGTH_SHORT).show();
+                finish();
                 Intent i = new Intent(Registracija.this,LoginActivity.class);
                 startActivity(i);
 

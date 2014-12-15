@@ -58,7 +58,6 @@
         android:maxLines="1" />
 
     <Button
-
         android:text="Login"
         android:textSize="18dp"
         android:id="@+id/btnLogin"
@@ -69,7 +68,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:textColor="@color/Black"
-        android:textAppearance="@color/Brown" />
+        />
 
     <Button
         android:text="Register now"
@@ -77,11 +76,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_shape_selector"
-        android:layout_below="@+id/btnLogin"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="29dp"
-        android:layout_alignParentBottom="false"
-        android:textColor="@color/Black" />
+        android:textColor="@color/Black"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
